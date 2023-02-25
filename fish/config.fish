@@ -8,6 +8,8 @@ if status --is-login
     set -gx PATH $PATH ~/linux/bin
 end
 
+export CHROME_EXECUTABLE=pwd
+
 set randNum (random 1 1 129)
 #echo $randNum
 
