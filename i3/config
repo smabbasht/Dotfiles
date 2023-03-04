@@ -82,7 +82,7 @@ bindsym $mod+m exec mailspring
 # bindsym $mod+y exec '~/Android/Sdk/emulator/emulator -avd Nexus -gpu host' 
 
 # open simplenotes
-bindsym $mod+n exec simplenote
+bindsym $mod+n exec flatpak run com.simplenote.Simplenote
 
 # kill focused window
 bindsym $mod+q kill
@@ -254,7 +254,7 @@ exec picom
 exec_always ~/.config/polybar/launch.sh &
 
 # Uncomment the following line to get random wallpepers from the specified directory
-exec feh --bg-fill --randomize ~/Downloads/Backgrounds/* &
+exec feh --bg-fill --randomize ~/.config/Backgrounds/* &
 
 
 
