@@ -35,7 +35,7 @@ I run Vanilla Arch Linux with:
 For Arch Based Distributions, the attached command will install all the dependencies
 
     sudo pacman -S neovim tmux kitty fish sddm starship rofi polybar i3 \
-            scrot feh picom noto-fonts-emoji notify --noconfirm
+            scrot feh picom noto-fonts-emoji notify --noconfirm i3lock-color i3lock-fancy-git 
 
 There are some key bindings in i3 configuration file such as for `brave-browser`, `thunar`, `mailspring` etc. If you don't wish to use them then comment corresponding lines
 from `line 68` to `line 83` in `i3/config` file so that i3 launches with no error. same goes if you are planning not to use `kitty` or `rofi` etc. 
@@ -44,7 +44,7 @@ from `line 68` to `line 83` in `i3/config` file so that i3 launches with no erro
 If you wish to use these nice opensource software, then install them through `pacman` and `yay` using the command added below
 
     sudo pacman -S yay thunar 
-    yay -S brave mailspring whatsapp-for-linux
+    yay -S brave mailspring
 
 This repository can be cloned into your `~/.config/` folder through this command:
 ```
@@ -142,6 +142,8 @@ This should be the touchpad or mouse (as per the device you desire to have natur
 
 *   To install themes in i3, you could use a nice utility `lxappearance`, install the desired theme to system with the relevant instructions provided by the theme distributors and then launch lxappearance and select from the list of installed themes. lxappearance is lightweight and is available in arch official repository and should also be installable with apt, dnf, rpm etc.
 
+*   I have also configured `i3lock-color` which is a fork of `i3lock`, there is a script for nice and decent lock in `i3/lock.sh`, I usually prefer to put an alias to `bash ~/.config/i3/lcok.sh && systemctl suspend` so that I could suspend with a nice lockscreen blazingly fast.
+
 ### Packages Used
 
 *   i3
@@ -156,6 +158,8 @@ This should be the touchpad or mouse (as per the device you desire to have natur
 *   scrot
 *   feh
 *   picom
+*   i3lock-color
+*   i3lock-fancy-git
 *   notify
 *   Any Nerd Font, I use `Hack Nerd Font` which is pretty nice,
 
