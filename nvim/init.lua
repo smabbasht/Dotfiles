@@ -368,6 +368,8 @@ require('nvim-autopairs').setup()
 -- map H to 'Hzz' and L to 'Lzz
 vim.keymap.set({'n', 'v'}, 'H', 'Hzz')
 vim.keymap.set({'n', 'v'}, 'L', 'Lzz')
+
+vim.keymap.set('n', '<leader>q', vim.cmd.bdelete)
 vim.keymap.set('n', '<leader><Right>', vim.cmd.bnext)
 vim.keymap.set('n', '<leader><Left>', vim.cmd.bprevious)
 
@@ -448,22 +450,22 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
-  clangd = {},
-  pyright = {
-    settings = {
-      python = {
-        analysis = {
-          typeCheckingMode = 'off',
-          autoSearchPaths = true,
-          useLibraryCodeForTypes = true,
-        },
-      },
-    },
-  },
-  prosemd_lsp = {},
-  remark_ls = {},
-  lua_ls = {},
+local servers = {}
+--   clangd = {},
+--   pyright = {
+--     settings = {
+--       python = {
+--         analysis = {
+--           typeCheckingMode = 'off',
+--           autoSearchPaths = true,
+--           useLibraryCodeForTypes = true,
+--         },
+--       },
+--     },
+--   },
+--   prosemd_lsp = {},
+--   remark_ls = {},
+--   lua_ls = {},
   -- dartls = {
   --   settings = {
   --     dart = {
@@ -497,7 +499,7 @@ local servers = {
   --     telemetry = { enable = false },
   --   },
   -- },
-}
+-- }
 
 -- Setup neovim lua configuration
 require('neodev').setup()
