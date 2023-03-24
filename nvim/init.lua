@@ -47,9 +47,9 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
   ---- plugins --------------------------------------------------------------------
-  
-  --          Plugins I installed 
-  
+
+  --          Plugins I installed
+
   ---- plugins_--------------------------------------------------------------------
 
   -- use 'nvim-tree/nvim-web-devicons'
@@ -59,9 +59,9 @@ require('packer').startup(function(use)
   use 'xiyaowong/nvim-transparent'
   use 'mbbill/undotree'
   use 'windwp/nvim-autopairs'
-  use 'tpope/vim-surround' 
+  use 'tpope/vim-surround'
   use 'lervag/vimtex' -- LaTeX support
-  use 'SirVer/ultisnips'
+  -- use 'SirVer/ultisnips'
   -- use 'olimorris/onedarkpro.nvim'
   -- require('coc').setup(
   --   {
@@ -81,7 +81,7 @@ require('packer').startup(function(use)
 
   -- Vim Commands
   vim.opt.incsearch = true -- search as you type
-  vim.opt.hlsearch = true -- highlight search results
+  vim.opt.hlsearch = true  -- highlight search results
   vim.cmd [[set cursorline]]
   vim.cmd [[set noswapfile]]
   vim.cmd [[set relativenumber]]
@@ -96,22 +96,70 @@ require('packer').startup(function(use)
   -- vim.g.tokyodark_transparent_background = true
   -- vim.g.tokyodark_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' }
 
- --------x plugins x-----------------------------------------------------------------------------------------------
+
+  --------x plugins x-----------------------------------------------------------------------------------------------
 
   -- Flutter
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
-  require("flutter-tools").setup{} -- use defaults
+  use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
+  require("flutter-tools").setup {} -- use defaults
 
+  -- Snippets
+  use {
+    'Shougo/deoplete.nvim',
+    run = ':UpdateRemotePlugins'
+  }
+
+  -- Enable deoplete at startup
+  vim.g.deoplete_enable_at_startup = 1
+
+  -- Install neosnippet.vim and neosnippet-snippets
+  use {'Shougo/neosnippet.vim'}
+  use {'Shougo/neosnippet-snippets'}
+
+  --
+  -- use { 'Shougo/neosnippet.vim'}
+  -- use { 'Shougo/neosnippet-snippets'}
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+  -- -- Enable neosnippet for python files
+  -- vim.g.neosnippet_snippets_directory = '~/.config/nvim/snippets/'
+  -- vim.g.neosnippet_disable_runtime_snippets = 0
+  -- vim.g.neosnippet_filetype_map = { python = 'python.snippets' }
+  -- vim.g.neosnippet_filetype_suppress = {}
+  -- vim.g.neosnippet.snippets_directory = vim.fn.expand("~/.config/nvim/snippets")
+
+  -- use {
+  --   'SirVer/ultisnips',
+  --   config = function()
+  --     vim.g.UltiSnipsExpandTrigger = '<tab>'
+  --     vim.g.UltiSnipsJumpForwardTrigger = '<c-b>'
+  --     vim.g.UltiSnipsJumpBackwardTrigger = '<c-z>'
+  --
+  --     -- Python snippets
+  --     vim.g.python_highlight_all = 1
+  --     vim.g.UltiSnipsSnippetDirectories = { 'UltiSnips' }
+  --     vim.g.UltiSnipsFiletypes = {
+  --       python = { 'python' },
+  --       c = { 'c' },
+  --       cpp = { 'cpp' },
+  --       cuda = { 'cuda' },
+  --       dart = { 'dart' }
+  --     }
+  --   end,
+  --   requires = 'honza/vim-snippets'
+  -- }
+  --
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
   -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automaticall
+  use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
+  use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automaticall
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
@@ -277,7 +325,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'dart','help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'dart', 'help', 'vim' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -343,13 +391,13 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 
----- Config ------------------------------------------------------------- 
+---- Config -------------------------------------------------------------
 
---        Configurations I wrote for my personal use  
+--        Configurations I wrote for my personal use
 
 ---- Config_ ------------------------------------------------------------
 
--- Setups for Plgins 
+-- Setups for Plgins
 
 require('nvim-autopairs').setup()
 -- require('nvim-autopairs.completion.cmp').setup({
@@ -357,7 +405,7 @@ require('nvim-autopairs').setup()
 --   map_complete = true, -- it will auto insert `(` after select function or method item
 --   auto_select = true, -- automatically select the first item
 -- })
--- setup for vim-surround 
+-- setup for vim-surround
 -- require('vim-surround').setup({
 --   mappings_style = 'surround',
 -- })
@@ -366,8 +414,8 @@ require('nvim-autopairs').setup()
 
 
 -- map H to 'Hzz' and L to 'Lzz
-vim.keymap.set({'n', 'v'}, 'H', 'Hzz')
-vim.keymap.set({'n', 'v'}, 'L', 'Lzz')
+vim.keymap.set({ 'n', 'v' }, 'H', 'Hzz')
+vim.keymap.set({ 'n', 'v' }, 'L', 'Lzz')
 
 vim.keymap.set('n', '<leader>q', vim.cmd.bdelete)
 vim.keymap.set('n', '<leader><Right>', vim.cmd.bnext)
@@ -387,9 +435,9 @@ vim.keymap.set("v", "<leader>y", ":w !xclip -i -sel c\n<leader>") -- copy to sys
 --
 -- Primeagen's Keymaps
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- search and replace
-vim.keymap.set("n", "<F5>", vim.lsp.buf.format) -- [f]ormat the Buffer
+vim.keymap.set("n", "<F5>", vim.lsp.buf.format)                                          -- [f]ormat the Buffer
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- Open previous sessions through tmux
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")              -- Open previous sessions through tmux
 
 
 --
@@ -466,39 +514,39 @@ local servers = {}
 --   prosemd_lsp = {},
 --   remark_ls = {},
 --   lua_ls = {},
-  -- dartls = {
-  --   settings = {
-  --     dart = {
-  --       sdkPath = '/usr/lib/dart',
-  --     },
-  --   },
-  -- },
-  --
+-- dartls = {
+--   settings = {
+--     dart = {
+--       sdkPath = '/usr/lib/dart',
+--     },
+--   },
+-- },
+--
 
-  -- dartls = {
-  --   settings = {
-  --     dart = {
-  --       sdkPath = '/usr/lib/dart',
-  --     },
-  --   },
-  -- },
-  -- ltex = {},
-  -- ltex-ls = {},
-  -- python_language_server = {},
-  -- prosemd_language_server = {},
-  -- remark_language_server = {},
-  -- lua_language_server = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+-- dartls = {
+--   settings = {
+--     dart = {
+--       sdkPath = '/usr/lib/dart',
+--     },
+--   },
+-- },
+-- ltex = {},
+-- ltex-ls = {},
+-- python_language_server = {},
+-- prosemd_language_server = {},
+-- remark_language_server = {},
+-- lua_language_server = {},
+-- gopls = {},
+-- pyright = {},
+-- rust_analyzer = {},
+-- tsserver = {},
 
-  -- sumneko_lua = {
-  --   Lua = {
-  --     workspace = { checkThirdParty = false },
-  --     telemetry = { enable = false },
-  --   },
-  -- },
+-- sumneko_lua = {
+--   Lua = {
+--     workspace = { checkThirdParty = false },
+--     telemetry = { enable = false },
+--   },
+-- },
 -- }
 
 -- Setup neovim lua configuration
