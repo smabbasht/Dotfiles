@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["deoplete.nvim"] = {
+    loaded = true,
+    path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/deoplete.nvim",
+    url = "https://github.com/Shougo/deoplete.nvim"
+  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -138,6 +143,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
+  },
+  ["neosnippet-snippets"] = {
+    loaded = true,
+    path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/neosnippet-snippets",
+    url = "https://github.com/Shougo/neosnippet-snippets"
+  },
+  ["neosnippet.vim"] = {
+    loaded = true,
+    path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/neosnippet.vim",
+    url = "https://github.com/Shougo/neosnippet.vim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -198,11 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/tokyodark.nvim",
     url = "https://github.com/tiagovla/tokyodark.nvim"
-  },
-  ultisnips = {
-    loaded = true,
-    path = "/home/smabbasht/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
   },
   undotree = {
     loaded = true,
