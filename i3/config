@@ -27,7 +27,8 @@ exec --no-startup-id dex --autostart --environment i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
 
 # low batteyr notifier
-exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, Get me some energy..!!"
+exec --no-startup-id bash ~/.config/scripts/i3-battery-monitor.sh
+# exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, Plug in the charger, \nI need some energy..!!"
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.

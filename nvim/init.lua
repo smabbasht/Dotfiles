@@ -443,7 +443,9 @@ vim.keymap.set('n', '<leader>tt', vim.cmd.TransparentToggle, { silent = true }) 
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) -- transparent background
 
 -- Keymap to copy to system clipboard
-vim.keymap.set("v", "<leader>y", ":w !xclip -i -sel c\n<leader>") -- copy to system clipboard
+-- The keymap below copies the whole line instead of copying only the selection, add similar keymap to <leader>Y to make it copy only the selection
+-- vim.keymap.set("v", "<leader>y", ":w !xclip -i -sel c\n<leader>") -- copy to system clipboard
+vim.keymap.set("v", "<leader>y", ":w !xclip -i -sel c \n\n")
 --
 -- Primeagen's Keymaps
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- search and replace
