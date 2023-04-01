@@ -10,6 +10,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+--set mouse=
+
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
@@ -73,6 +75,16 @@ require('packer').startup(function(use)
   --   'marioortizmanero/adoc-pdf-live.nvim',
   --   config = "require('adoc_pdf_live').setup()"
   -- }
+  use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+      }
+    end,
+    requires = {'nvim-tree/nvim-web-devicons'}
+  }
   --
   ---------- Other Minor Cofigurations (this code block works only here right now, will fix it hopefuly) ------------
   --

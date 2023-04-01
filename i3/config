@@ -23,6 +23,8 @@ font pango:Hack Nerd Font 9
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
 
 # low batteyr notifier
 exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, Get me some energy..!!"
@@ -30,12 +32,19 @@ exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
+# locate cursor
+# set $ctrl 37
+# bindcode  $mod+$ctrl exec "DISPLAY=:0 ~/.local/bin/find-cursor -c orange -f"
+
 # change language
 exec_always "setxkbmap -model pc104 -layout us,ur -variant ,, -option grp:alt_shift_toggle"
 
 # # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# clipboard applet
+exec --no-startup-id parcellite
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -97,6 +106,9 @@ bindsym $mod+n exec flatpak run com.simplenote.Simplenote
 
 # kill focused window
 bindsym $mod+q kill
+
+# # open neovim
+# bindsym $mod+c exec nvim
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id "rofi -i -show drun -modi drun -show-icons"
@@ -201,8 +213,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Abbas Bhai, Jarahay hain janab?' -B 'Ji Huzoor' 'i3-msg exit'"
 
 # Confiure gaps
 gaps inner 8
@@ -256,17 +266,77 @@ for_window [class="^.*"] border pixel 2
 # bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
 bindsym Print exec --no-startup-id flameshot gui
 
-# gnome polickit authentivation
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# # gnome polickit authentivation
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Compositor
-exec picom
+# exec picom
 
 # run launch.sh
 exec_always ~/.config/polybar/launch.sh &
 
 # Uncomment the following line to get random wallpepers from the specified directory
-exec feh --bg-fill --randomize ~/.config/Backgrounds/* &
+# exec feh --bg-fill --randomize ~/.config/Backgrounds/* &
 
+# >>> Plasma Integration <<<
+  # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everything)
+  
+exec --no-startup-id wmctrl -c Plasma
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
+# Compositor (Animations, Shadows, Transparency)
+exec --no-startup-id picom -cCFb
 
+# >>> Window rules <<<
+# >>> Avoid tiling Plasma popups, dropdown windows, etc. <<<
+# For the first time, manually resize them, i3 will remember the setting for floating windows
+# for_window [class="yakuake"] floating enable;
+for_window [class="lattedock"] floating enable;
+for_window [class="plasmashell"] floating enable;
+for_window [class="Kmix"] floating enable; border none
+for_window [class="kruler"] floating enable; border none
+for_window [class="Plasma"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position 1450px 20px
+no_focus [class="plasmashell" window_type="notification"] 
+
+# >>> Avoid tiling for non-Plasma stuff <<<
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [instance="__scratchpad"] floating enable
+
+#
+# # KDE Plasma Stuff here:
+# # Kill the wallpaper window set by Plasma*
+# for_window [title="Desktop — Plasma"] kill; floating enable; border none
+#
+# # Set Plasma dialogs and pop ups as floating so they won't get tiled
+# for_window [window_role="pop-up"] floating enable
+# for_window [window_role="task_dialog"] floating enable
+# for_window [class="systemsettings"] floating enable
+# for_window [class="plasmashell"] floating enable;
+# for_window [class="Plasma"] floating enable; border none
+# for_window [title="plasma-desktop"] floating enable; border none
+# for_window [class="krunner"] floating enable; border none
+# for_window [class="Kmix"] floating enable; border none
+# for_window [class="Klipper"] floating enable; border none
+# for_window [class="Plasmoidviewer"] floating enable; border none
+# for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+# no_focus [class="plasmashell" window_type="notification"
+#
+# # Set other stuff as floating
+# for_window [class="(?i)*nextcloud*"] floating disable
+
+# Set the desktop background
+exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/* &
+
+# # Start the compositor daemonizing it (-b) and enabling shadows (-c)
+# exec_always --no-startup-id picom -cb
