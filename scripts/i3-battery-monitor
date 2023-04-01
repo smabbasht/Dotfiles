@@ -1,0 +1,51 @@
+#!/bin/bash
+
+BATTERY="BAT0"
+FULL=${3:-90}
+LOW=${2:-15}
+CRITICAL=${1:-5}
+
+log() {
+	echo "[pid=$$]" "$(date +"%D %I:%M:%S %p")" "$@" >> /tmp/.i3-battery-monitor-log
+}
+
+warn() {
+	if [[ -z "$2" ]]; then
+		timeout 30s rofi -dmenu -p "Warning" -l 1 <<<"$1" >/dev/null
+	else
+		timeout 30s rofi -dmenu -p "Warning" -l 2 -format i <<<"$1"$'\n'"$2"
+	fi
+}
+
+# Kill other instances of i3-battery-monitor
+if pids=$(pidof -x $0 -o $$); then
+	log "Killing PIDs: $pids"
+	kill $pids 2>/dev/null
+fi 
+
+log "Parameters: FULL=$FULL LOW=$LOW CRITICAL=$CRITICAL"
+
+# Loop indefinitely until killed
+while true; do
+	CHARGE=$(cat "/sys/class/power_supply/$BATTERY/capacity")
+	STATUS=$(cat "/sys/class/power_supply/$BATTERY/status")
+	log "$STATUS $CHARGE%"
+	if [[ $STATUS == "Discharging" ]]; then
+		if [[ $CHARGE -le $CRITICAL ]]; then
+			log "Critical warning"
+			if [[ $(warn "I am tired, ($CHARGE%)! Okay, Go Sleep" "Wait a minute") -ne 1 ]]; then
+				log "Thankyou buddy, I needed rest, See ya later.."
+				i3lock-color-fancy suspend
+			fi
+		elif [[ $CHARGE -le $LOW ]]; then
+			log "Low warning"
+			warn "I fear I can't stay up long, I am feeling tiredness, ($CHARGE%)"
+		fi
+	else
+		if [[ $CHARGE -ge $FULL ]]; then
+			log "Full warning"
+			warn "Hey hey, I don't do drugs, I'll get hyperactive, just unplug the charger.. ($CHARGE%)"
+		fi
+	fi
+	sleep 30s
+done
