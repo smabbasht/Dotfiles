@@ -11,9 +11,9 @@ log() {
 
 warn() {
 	if [[ -z "$2" ]]; then
-		timeout 30s rofi -dmenu -p "Warning" -l 1 <<<"$1" >/dev/null
+		timeout 30s rofi -dmenu -p "Battery" -l 1 <<<"$1" >/dev/null
 	else
-		timeout 30s rofi -dmenu -p "Warning" -l 2 -format i <<<"$1"$'\n'"$2"
+		timeout 30s rofi -dmenu -p "Battery" -l 2 -format i <<<"$1"$'\n'"$2"
 	fi
 }
 
@@ -33,19 +33,19 @@ while true; do
 	if [[ $STATUS == "Discharging" ]]; then
 		if [[ $CHARGE -le $CRITICAL ]]; then
 			log "Critical warning"
-			if [[ $(warn "I am tired, ($CHARGE%)! Okay, Go Sleep" "Wait a minute") -ne 1 ]]; then
-				log "Thankyou buddy, I needed rest, See ya later.."
-				i3lock-color-fancy suspend
+			if [[ $(warn "Alert: it's ($CHARGE%) left, Put it on Sleep" "Wait a minute") -ne 1 ]]; then
+				log "The laptop is going to sleep"
+				i3lock-fancy -t 'Accept the situation and Move on' && systemctl suspend
 			fi
 		elif [[ $CHARGE -le $LOW ]]; then
 			log "Low warning"
-			warn "I fear I can't stay up long, I am feeling tiredness, ($CHARGE%)"
+			warn "I fear I can't stay up long, I am feeling tired. ($CHARGE%)"
 		fi
 	else
 		if [[ $CHARGE -ge $FULL ]]; then
 			log "Full warning"
-			warn "Hey hey, I don't do drugs, I'll get hyperactive, just unplug the charger.. ($CHARGE%)"
+			warn "Hey hey, I don't do drugs. Unplug the charger lest I get hyperactive.. ($CHARGE%)"
 		fi
 	fi
-	sleep 30s
+	sleep 100s
 done

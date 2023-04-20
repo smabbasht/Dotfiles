@@ -10,7 +10,7 @@ end
 
 export CHROME_EXECUTABLE=pwd
 
-set randNum (random 1 1 129)
+set randNum (random 1 1 108)
 #echo $randNum
 
 function quote
@@ -30,6 +30,9 @@ end
 
 # Call the prompt function
 prompt
+
+export $(dbus-launch)
+fish_add_path $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
 #
 # Starship
 starship init fish | source
