@@ -27,8 +27,9 @@ exec --no-startup-id dex --autostart --environment i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
 
 # low batteyr notifier
-exec --no-startup-id bash ~/.config/scripts/i3-battery-monitor.sh
-# exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, Plug in the charger, \nI need some energy..!!"
+# exec --no-startup-id bash ~/.config/scripts/i3-battery-monitor.sh
+# exec --no-startup-id i3-battery-popup
+exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, Plug in the charger, \nI need some energy..!!"
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -78,6 +79,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # open brave browser 
 bindsym $mod+b exec brave
+
+# open Clion
+bindsym $mod+c exec clion
 
 # open whatsapp 
 bindsym $mod+o exec okular 
@@ -218,7 +222,7 @@ bindsym $mod+Shift+r restart
 # Confiure gaps
 gaps inner 8
 gaps outer 8
-smart_gaps on
+# smart_gaps on
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -276,6 +280,9 @@ bindsym Print exec --no-startup-id flameshot gui
 # run launch.sh
 exec_always ~/.config/polybar/launch.sh &
 
+# Set the desktop background
+exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/current-backgrounds/* &
+
 # Uncomment the following line to get random wallpepers from the specified directory
 # exec feh --bg-fill --randomize ~/.config/Backgrounds/* &
 
@@ -286,7 +293,7 @@ exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
 # Compositor (Animations, Shadows, Transparency)
-exec --no-startup-id picom -cCFb
+exec --no-startup-id picom -cb
 
 # >>> Window rules <<<
 # >>> Avoid tiling Plasma popups, dropdown windows, etc. <<<
@@ -336,8 +343,6 @@ for_window [instance="__scratchpad"] floating enable
 # # Set other stuff as floating
 # for_window [class="(?i)*nextcloud*"] floating disable
 
-# Set the desktop background
-exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/* &
 
 # # Start the compositor daemonizing it (-b) and enabling shadows (-c)
 # exec_always --no-startup-id picom -cb
