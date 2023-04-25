@@ -1,4 +1,4 @@
-
+#### Note: The personal branch is intended for my personal use only, Don't use it directly unless you are smabbasht..!
 
 
 ### Screenshots
