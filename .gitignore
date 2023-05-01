@@ -1,5 +1,59 @@
+KDE/*
+PlasmaDiscoverUpdates
+Trolltech.conf
+bluedevilglobalrc
+drkonqirc
+emaildefaults
+flameshotrc
+kactivitymanagerdrc
+kateschemarc
+kcminputrc
+kglobalshortcutsrc
+kgpgrc
+khotkeysrc
+kmixctrlrc
+kmixrc
+kmousetool_strokes.txt
+konsolerc
+konsolesshconfig
+krunnerrc
+kscreenlockerrc
+ksmserverrc
+ktimezonedrc
+kwalletrc
+kwinrc
+kwinrulesrc
+kxkbrc
+libaccounts-glib/
+menus/
+parcellite/
+powerdevilrc
+powermanagementprofilesrc
+spectaclerc
+systemsettingsrc
+trashrc
+xdg-desktop-portal-kderc
+xsettingsd/
 .gsd-keyboard.settings-ported
+cef_user_data/*
+akregatorrc
+JetBrains/*
+flameshot/*
+gthumb/*
+kdedefaults/*
+kdeconnect/*
+zoom*
+plasma*
+kde*
+Mechvibes/*
+gtk*
+baloofilerc
+discover*
+Mailspring/*Cache*/*
+Mailspring/*cache*/*
+Mailspring/*Storage*/*
 .vimrc
+falkon/*
 Android Open Source Project/*
 BraveSoftware/*
 Code - OSS/*
@@ -7,11 +61,11 @@ Electron/*
 GNOME-xdg-terminals.list
 GitHub Desktop/*
 Google/*
-Mailspring/*
+# Mailspring/*
 Microsoft/*
 QtProject.conf
 README.pdf
-Simplenote/*
+# Simplenote/*
 Thunar/*
 archlinux-tweak-tool/*
 autostart/*
@@ -37,7 +91,7 @@ iput2.txt
 kconf_updaterc
 kde.org/*
 kdeglobals
-lazygit/*
+# lazygit/*
 libfm/*
 libreoffice/*
 logs/*
@@ -45,7 +99,7 @@ mimeapps.list
 monitors.xml
 monitors.xml~
 nautilus/*
-neofetch/*
+# neofetch/*
 node_modules/*
 okularpartrc
 okularrc
