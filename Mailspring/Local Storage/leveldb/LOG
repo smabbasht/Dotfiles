@@ -1,2 +1,3 @@
-2023/04/22-12:49:05.503 1d48d Creating DB /home/smabbasht/.config/Mailspring/Local Storage/leveldb since it was missing.
-2023/04/22-12:49:05.525 1d48d Reusing MANIFEST /home/smabbasht/.config/Mailspring/Local Storage/leveldb/MANIFEST-000001
+2023/05/01-18:10:44.138 2d042 Reusing MANIFEST /home/smabbasht/.config/Mailspring/Local Storage/leveldb/MANIFEST-000001
+2023/05/01-18:10:44.138 2d042 Recovering log #3
+2023/05/01-18:10:44.139 2d042 Reusing old log /home/smabbasht/.config/Mailspring/Local Storage/leveldb/000003.log 

@@ -1,2 +1,3 @@
-2023/04/22-12:49:13.020 1d4a3 Creating DB /home/smabbasht/.config/Mailspring/Session Storage since it was missing.
-2023/04/22-12:49:13.032 1d4a3 Reusing MANIFEST /home/smabbasht/.config/Mailspring/Session Storage/MANIFEST-000001
+2023/05/01-18:12:12.004 2d05c Reusing MANIFEST /home/smabbasht/.config/Mailspring/Session Storage/MANIFEST-000001
+2023/05/01-18:12:12.004 2d05c Recovering log #3
+2023/05/01-18:12:12.004 2d05c Reusing old log /home/smabbasht/.config/Mailspring/Session Storage/000003.log 
