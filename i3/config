@@ -48,6 +48,10 @@ exec_always "setxkbmap -model pc104 -layout us,ur -variant ,, -option grp:alt_sh
 # clipboard applet
 exec parcellite
 
+# start mechvibes on startup 
+exec --no-startup-id mechvibes
+
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -285,7 +289,9 @@ bindsym Print exec --no-startup-id flameshot gui
 exec_always ~/.config/polybar/launch.sh &
 
 # Set the desktop background
-exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/current-backgrounds/* &
+# exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/current-backgrounds/* &
+exec --no-startup-id feh --bg-fill --randomize ~/Downloads/Backgrounds/* &
+
 
 # Uncomment the following line to get random wallpepers from the specified directory
 # exec feh --bg-fill --randomize ~/.config/Backgrounds/* &
