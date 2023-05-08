@@ -9,6 +9,7 @@ if status --is-login
 end
 
 export CHROME_EXECUTABLE=pwd
+echo " "
 neofetch
 
 set randNum (random 1 1 108)
@@ -34,7 +35,9 @@ prompt
 
 export $(dbus-launch)
 fish_add_path $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
-bash ~/.config/scripts/remind.sh
+# bash ~/.config/scripts/remind.sh
+fish_add_path ~/.config/scripts
+# bash ~/.config/scripts/n.sh
 
 #
 # Starship

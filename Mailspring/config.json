@@ -21,7 +21,15 @@
       "workspace": {
         "mode": "list"
       },
-      "keymapTemplate": "Gmail"
+      "keymapTemplate": "Gmail",
+      "theme": "ui-dark",
+      "tutorial": {
+        "seen": [
+          "ThreadSearchBar",
+          "ActivityListButton",
+          "ToolbarSnooze"
+        ]
+      }
     },
     "identity": {
       "id": "f5428d52-44ff-44ed-9c0a-cfe4d3ee0e24",
@@ -116,9 +124,40 @@
         "authedAt": 1682946726.613,
         "color": "",
         "__cls": "Account"
+      },
+      {
+        "id": "fa886945",
+        "metadata": [],
+        "name": "Syed Muhammad Abbas Haider Taqvi",
+        "provider": "office365",
+        "emailAddress": "st06862@st.habib.edu.pk",
+        "settings": {
+          "imap_host": "outlook.office365.com",
+          "imap_port": 993,
+          "imap_username": "st06862@st.habib.edu.pk",
+          "imap_security": "SSL / TLS",
+          "imap_allow_insecure_ssl": false,
+          "smtp_host": "smtp.office365.com",
+          "smtp_port": 587,
+          "smtp_username": "st06862@st.habib.edu.pk",
+          "smtp_security": "STARTTLS",
+          "smtp_allow_insecure_ssl": false,
+          "container_folder": "",
+          "refresh_client_id": "8787a430-6eee-41e1-b914-681d90d35625"
+        },
+        "label": "st06862@st.habib.edu.pk",
+        "autoaddress": {
+          "type": "bcc",
+          "value": ""
+        },
+        "aliases": [],
+        "syncState": "ok",
+        "authedAt": 1683045896.444,
+        "color": "",
+        "__cls": "Account"
       }
     ],
-    "accountsVersion": 1,
+    "accountsVersion": 3,
     "containerFolderDefault": "",
     "mailto": {
       "prompted-about-default": true

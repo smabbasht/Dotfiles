@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# if [ -z "$TMUX" ]; then
+#     kitty @ set-spacing padding=0
+# fi
+#
+
+
+
+function n {
+    local editor="nvim"
+    local directory=""
+    local file=""
+    local query=""
+
+    if [ "$#" -eq 2 ]; then
+        directory=$(zoxide query "$1")
+        query="$2"
+        cd "$directory"
+        if [ "$2" == "." ]; then
+            $editor .
+            return 0
+        fi
+    elif [ "$#" -gt 2 ]; then
+        echo "Usage:" >&2
+        echo "n                                : opens fzf interface and opens selection from fzf in nvim." >&2
+        echo "n [search-pattern]               : opens fzf with search-pattern and opens selection in nvim." >&2
+        echo "n [folder-name] [search-pattern] : zoxides into folder-name and opens fzf result in nvim." >&2
+        echo "n [folder-name] .                : zoxides into folder-name and opens nvim in that directory." >&2
+        return 1
+    fi
+
+    file=$(fzf --preview 'bat {}' --height 80% --border --reverse --ansi --tiebreak=index --query "$query" --select-1 --exit-0)
+
+    if [[ -n "$file" ]]; then
+        $editor "$file"
+    fi
+
+}
+n "$@"
+
+# if [ -z "$TMUX" ]; then
+#     kitty @ set-spacing padding=default
+# fi

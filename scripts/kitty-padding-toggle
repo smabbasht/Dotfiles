@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ "$(kitty @ set-spacing padding)" = "padding=0" ]; then
+    kitty @ set-spacing padding=10
+else
+    kitty @ set-spacing padding=0
+fi
+
