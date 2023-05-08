@@ -98,6 +98,14 @@ require('packer').startup(function(use)
   vim.cmd [[set noswapfile]]
   vim.cmd [[set relativenumber]]
   vim.cmd [[set scrolloff=5]]
+  -- vim.api.nvim_command([[ autocmd VimLeave * :silent !kitty @ set-spacing padding=20 margin=10 ]])
+  -- vim.cmd [[
+  --   augroup kitty_mp
+  --     autocmd!
+  --     au VimLeave * :silent !kitty @ set-spacing padding=4
+  --     au VimEnter * :silent !kitty @ set-spacing padding=0
+  --   augroup END
+  -- ]]
   -- vim.cmd [[TransparentEnable]]
 
   -- Colorscheme
