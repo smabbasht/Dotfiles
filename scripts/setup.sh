@@ -19,8 +19,17 @@ makepkg -sirc
 yay -S brave-bin --noconfirm
 
 # Install other packages
-sudo pacman -S neovim tmux starship polybar rofi zoxide fzf polybar feh noto-fonts-emoji notify thunar unzip moreutils --noconfirm
+sudo pacman -S neovim tmux starship polybar rofi zoxide fzf polybar feh noto-fonts-emoji notify thunar unzip moreutils flameshot parcellite --noconfirm
 yay -S picom-jonaburg-git --noconfirm
+
+# install other tiny packages
+sudo pacman -S python-pygments imagemagick libcanberra python-pynvim libnotify archlinux-keyring libsecret xorg-xbacklight --noconfirm
+yay -S find-cursor i3-battery-popup --noconfirm
+
+# Install npm of desired version (downgrade for copilot)
+sudo pacman -S nodejs npm --noconfirm
+sudo npm install -g n
+n 17.9.0
 
 # Setting SDDM
 sudo systemctl disable -gtk-greeter lightdm
@@ -39,6 +48,19 @@ mv ./Hack.zip ~/.local/share/fonts/Hack.zip
 cd ~/.local/share/fonts
 unzip Hack.zip
 rm -rvf Hack.zip
+
+# Running PackerSync for Neovim
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+# setup tmux
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux start-server
+tmux new-session -d
+tmux source ~/.config/tmux/.tmux.conf
+ln ~/config/tmux/.tmux.conf ~/.tmux.conf
+bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+tmux kill-server
 
 # Remove orphaned Packges 
 sudo pacman -Qtdq | ifne sudo pacman -Rns - --noconfirm
