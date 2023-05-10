@@ -19,7 +19,7 @@ makepkg -sirc --noconfirm
 yay -S brave-bin --noconfirm
 
 # Install other packages
-sudo pacman -S neovim tmux starship rofi zoxide fzf polybar feh noto-fonts-emoji thunar unzip moreutils flameshot parcellite xclip bat exa man neofetch --noconfirm
+sudo pacman -S neovim tmux starship rofi zoxide fzf polybar feh noto-fonts-emoji thunar unzip moreutils flameshot parcellite xclip bat exa man neofetch lazygit --noconfirm
 yay -S picom-jonaburg-git --noconfirm
 
 # install other tiny packages
