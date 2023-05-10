@@ -111,8 +111,8 @@ bindsym $mod+m exec mailspring
 # I have a fish script that returns a random quote from a file and I want to get the quote with i3lock-fancy as as argument for it's -t option, please write a command that does that
 
 
-bindsym $mod+l       exec --no-startup-id "i3lock-fancy -t 'Accept the situation and Move on.'"
-bindsym $mod+Shift+l exec --no-startup-id "i3lock-fancy -t 'Accept the situation and Move on.' && systemctl suspend"
+bindsym $mod+l exec --no-startup-id "i3lock-fancy -t 'Yes, I know, I look so good..!'"
+bindsym $mod+Shift+l exec --no-startup-id "systemctl suspend && i3lock-fancy -t 'Haha, We caught you sneaking, It is locked now'"
 
 # bindsym $mod+y exec '~/Android/Sdk/emulator/emulator -avd Nexus -gpu host' 
 # open simplenotes

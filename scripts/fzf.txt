@@ -1,2 +1,0 @@
-
-essential-packages.sh
