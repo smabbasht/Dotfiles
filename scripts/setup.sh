@@ -11,15 +11,15 @@ sudo pacman -S fish kitty --noconfirm
 # Installing yay
 cd
 sudo git clone https://aur.archlinux.org/yay-git.git
-sudo chown -R smabbasht:smabbasht yay-git
+sudo chown -R $USER:$USER yay-git
 cd yay-git/
-makepkg -sirc
+makepkg -sirc --noconfirm
 
 # Installing essential packages
 yay -S brave-bin --noconfirm
 
 # Install other packages
-sudo pacman -S neovim tmux starship polybar rofi zoxide fzf polybar feh noto-fonts-emoji notify thunar unzip moreutils flameshot parcellite --noconfirm
+sudo pacman -S neovim tmux starship rofi zoxide fzf polybar feh noto-fonts-emoji thunar unzip moreutils flameshot parcellite xclip bat exa --noconfirm
 yay -S picom-jonaburg-git --noconfirm
 
 # install other tiny packages
@@ -29,12 +29,12 @@ yay -S find-cursor i3-battery-popup --noconfirm
 # Install npm of desired version (downgrade for copilot)
 sudo pacman -S nodejs npm --noconfirm
 sudo npm install -g n
-n 17.9.0
+sudo n 17.9.0
 
 # Setting SDDM
-sudo systemctl disable -gtk-greeter lightdm
-sudo pacman -Rs lightdm
-sudo pacman -S sddm
+sudo systemctl disable lightdm
+sudo pacman -Rs lightdm-gtk-greeter lightdm
+sudo pacman -S sddm --noconfirm
 sudo systemctl enable sddm
 yay -S sddm-sugar-dark --noconfirm
 
@@ -58,7 +58,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux start-server
 tmux new-session -d
 tmux source ~/.config/tmux/.tmux.conf
-ln ~/config/tmux/.tmux.conf ~/.tmux.conf
+ln ~/.config/tmux/.tmux.conf ~/.tmux.conf
 bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 tmux kill-server
 
