@@ -4,6 +4,9 @@ mv ~/dotfiles ~/.config
 cd ~/.config
 git switch personal
 
+# Configure pacman for parallel downloads by editing pacman.conf using sed
+sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
+
 # Installing essential packages
 sudo pacman -Syu
 sudo pacman -S fish kitty --noconfirm
@@ -24,8 +27,8 @@ yay -S picom-jonaburg-git --noconfirm
 sudo pacman -R i3lock --noconfirm
 
 # install other tiny packages
-sudo pacman -S python-pygments imagemagick libcanberra python-pynvim libnotify archlinux-keyring libsecret xorg-xbacklight icat --noconfirm
-yay -S find-cursor i3-battery-popup i3-lock-fancy --noconfirm
+sudo pacman -S python-pygments imagemagick libcanberra python-pynvim libnotify archlinux-keyring libsecret brightnessctl --noconfirm
+yay -S find-cursor i3-battery-popup i3-lock-fancy icat --noconfirm
 
 # Install npm of desired version (downgrade for copilot)
 sudo pacman -S nodejs npm --noconfirm
@@ -57,6 +60,7 @@ sudo awk '/Identifier "libinput touchpad catchall"/{print;print "        Option 
 sudo pacman -S lxappearance --noconfirm
 
 # Enable Network Manager
+sudo pacman -S networkmanager --noconfirm
 sudo systemctl enable NetworkManager
 
 # Install Nerd Fonts
