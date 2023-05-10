@@ -46,10 +46,9 @@ exec_always "setxkbmap -model pc104 -layout us,ur -variant ,, -option grp:alt_sh
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # clipboard applet
-exec parcellite
+exec parcellite --no-startup-id
 
 # start mechvibes on startup 
-exec --no-startup-id mechvibes && killall mechvibes
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -98,7 +97,7 @@ bindsym $mod+o exec okular
 # bindsym $mod+Shift+w exec whatsapp-for-linux
 
 # open nautilus
-bindsym $mod+x exec dolphin
+bindsym $mod+x exec thunar
 
 bindsym $mod+g exec ~/.config/scripts/kitty-padding-toggle
 
