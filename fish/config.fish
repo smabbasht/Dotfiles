@@ -8,9 +8,8 @@ if status --is-login
     set -gx PATH $PATH ~/linux/bin
 end
 
-export CHROME_EXECUTABLE=pwd
-echo " "
 neofetch
+fish_add_path ~/swift-n
 
 set randNum (random 1 1 108)
 #echo $randNum
