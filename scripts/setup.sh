@@ -21,10 +21,11 @@ yay -S brave-bin --noconfirm
 # Install other packages
 sudo pacman -S neovim tmux starship rofi zoxide fzf polybar feh noto-fonts-emoji thunar unzip moreutils flameshot parcellite xclip bat exa man neofetch lazygit --noconfirm
 yay -S picom-jonaburg-git --noconfirm
+sudo pacman -R i3lock --noconfirm
 
 # install other tiny packages
 sudo pacman -S python-pygments imagemagick libcanberra python-pynvim libnotify archlinux-keyring libsecret xorg-xbacklight icat --noconfirm
-yay -S find-cursor i3-battery-popup --noconfirm
+yay -S find-cursor i3-battery-popup i3-lock-fancy --noconfirm
 
 # Install npm of desired version (downgrade for copilot)
 sudo pacman -S nodejs npm --noconfirm
