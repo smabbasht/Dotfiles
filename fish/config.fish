@@ -11,7 +11,7 @@ end
 neofetch
 fish_add_path ~/swift-n
 
-set randNum (random 1 1 108)
+set randNum (random 1 1 104)
 #echo $randNum
 
 function quote

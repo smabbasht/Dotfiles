@@ -28,5 +28,4 @@ yay -S spotify-adblock-git
 yay -S spotifywm-git
 yay -S stardict-wordnet
 yay -S teams
-yay -S yay
 yay -S zoom
