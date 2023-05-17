@@ -97,7 +97,10 @@ require('packer').startup(function(use)
   vim.cmd [[set cursorline]]
   vim.cmd [[set noswapfile]]
   vim.cmd [[set relativenumber]]
-  vim.cmd [[set scrolloff=5]]
+  vim.cmd [[set scrolloff=10]]
+  vim.cmd [[set numberwidth=4]]
+  -- set width of color column 
+
   -- vim.api.nvim_command([[ autocmd VimLeave * :silent !kitty @ set-spacing padding=20 margin=10 ]])
   -- vim.cmd [[
   --   augroup kitty_mp
@@ -430,7 +433,11 @@ require('nvim-autopairs').setup()
 --   mappings_style = 'surround',
 -- })
 
--- Switch Buffers
+-- No-op the arrow keys
+vim.keymap.set({'n', 'v', 'i'}, '<Up>', '<nop>')
+vim.keymap.set({'n', 'v', 'i'}, '<Down>', '<nop>')
+vim.keymap.set({'n', 'v', 'i'}, '<Left>', '<nop>')
+vim.keymap.set({'n', 'v', 'i'}, '<Right>', '<nop>')
 
 
 -- map H to 'Hzz' and L to 'Lzz
@@ -438,11 +445,13 @@ vim.keymap.set({ 'n', 'v' }, 'H', 'Hzz')
 vim.keymap.set({ 'n', 'v' }, 'L', 'Lzz')
 
 vim.keymap.set('n', '<leader>q', vim.cmd.bdelete)
-vim.keymap.set('n', '<leader><Right>', vim.cmd.bnext)
-vim.keymap.set('n', '<leader><Left>', vim.cmd.bprevious)
+vim.keymap.set('n', '<leader>l', vim.cmd.bnext)
+vim.keymap.set('n', '<leader>h', vim.cmd.bprevious)
+-- map windows key to esc in insert mode
+-- vim.cmd [[inoremap <CR> <Esc>]]
 
 -- Browse Files
-vim.keymap.set('n', '<leader>bf', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>bf', vim.cmd.Vex)
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- Toggle Transparency

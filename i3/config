@@ -28,8 +28,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take m
 
 # low batteyr notifier
 # exec --no-startup-id bash ~/.config/scripts/i3-battery-monitor.sh
-# exec --no-startup-id i3-battery-popup
-exec --no-startup-id i3-battery-popup -n -L 20 -l 10 -t 1m -m "Bhai, I'm tired, I need some energy..!!"
+exec --no-startup-id cbatticon
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -71,8 +70,8 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 # bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 3
 # bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 1
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id bash -c 'b=$(xrandr --verbose | grep -i brightness | head -n 1 | cut -d" " -f2) && b2=$(echo -e "import math\nf = lambda x: (1 - 1/(1+math.exp(4*x-2)))\nprint(\\\"%.2f\\\" % f(0.1+$b))" | python) && xrandr --output eDP1 --brightness $b2'
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id bash -c 'b=$(xrandr --verbose | grep -i brightness | head -n 1 | cut -d" " -f2) && b2=$(echo -e "import math\nf = lambda x: (1 - 1/(1+math.exp(4*x-2)))\nprint(\\\"%.2f\\\" % f(-0.1+$b))" | python) && xrandr --output eDP1 --brightness $b2'
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id bash -c 'b=$(xrandr --verbose | grep -i brightness | head -n 1 | cut -d" " -f2) && b2=$(echo -e "import math\nf = lambda x: (1 - 1/(1+math.exp(4*x-2)))\nprint(\"%.2f\" % f(0.1+$b))" | python) && xrandr --output eDP1 --brightness $b2'
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id bash -c 'b=$(xrandr --verbose | grep -i brightness | head -n 1 | cut -d" " -f2) && b2=$(echo -e "import math\nf = lambda x: (1 - 1/(1+math.exp(4*x-2)))\nprint(\"%.2f\" % f(-0.1+$b))" | python) && xrandr --output eDP1 --brightness $b2'
 
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
@@ -103,10 +102,17 @@ bindsym $mod+o exec okular
 # open nautilus
 bindsym $mod+x exec thunar
 
-bindsym $mod+g exec ~/.config/scripts/kitty-padding-toggle
-
 # open mailspring
 bindsym $mod+m exec mailspring
+
+
+# Fix dialog window size in browser
+# for_window [window_role="Preferences"] floating enable, resize set 800 600, move position center
+# for_window [window_role="pop-up"] floating enable, resize set 800 600, move position center
+# for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, move position center
+# for_window [window_role="conversation"] floating enable, resize set 800 600, move position center
+        
+
 
 # lock and suspend
 # I want to store result of fish function in a variable and then call it with -t option in i3lock-fancy
@@ -115,8 +121,8 @@ bindsym $mod+m exec mailspring
 # I have a fish script that returns a random quote from a file and I want to get the quote with i3lock-fancy as as argument for it's -t option, please write a command that does that
 
 
-bindsym $mod+l exec --no-startup-id "i3lock-fancy -t 'Yes, I know, I look so good..!'"
-bindsym $mod+Shift+l exec --no-startup-id "systemctl suspend && i3lock-fancy -t 'Haha, We caught you sneaking, It is locked now'"
+bindsym $mod+i exec --no-startup-id "i3lock-fancy -t 'Yes, I know, I look so good..!'"
+bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy -t 'Haha, We caught you sneaking, It is locked now'"
 
 # bindsym $mod+y exec '~/Android/Sdk/emulator/emulator -avd Nexus -gpu host' 
 # open simplenotes
@@ -133,6 +139,7 @@ bindsym $mod+d exec --no-startup-id "rofi -i -show drun -modi drun -show-icons"
 # search for files too
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show run"
 
+exec --no-startup-id ~/.config/scripts/swap_win_esc.sh
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -140,6 +147,8 @@ bindsym $mod+Shift+d exec --no-startup-id "rofi -show run"
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+
+focus_wrapping no
 # change focus
 # bindsym $mod+h focus left
 # bindsym $mod+j focus down
@@ -153,22 +162,22 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-# bindsym $mod+Shift+h move left
-# bindsym $mod+Shift+j move down
-# bindsym $mod+Shift+k move up
-# bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+h split h
+bindsym $mod+Ctrl+h split h
 
 # split in vertical orientation
-bindsym $mod+Shift+v split v
+bindsym $mod+Ctrl+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -233,8 +242,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Confiure gaps
-gaps inner 8
-gaps outer 8
+gaps inner 5
+gaps outer 5
 # smart_gaps on
 
 # resize window (you can also use the mouse for that)
@@ -269,7 +278,7 @@ bindsym $mod+r mode "resize"
 client.background       #282a36
 
 #class                 border  backgr. text    indicator child_border
-client.focused_active   #b4c5f9 #44475a #f8f8f2 #124232   #44475a
+client.focused_active   #000000 #44475a #f8f8f2 #000000   #44475a
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -295,20 +304,10 @@ exec_always ~/.config/polybar/launch.sh &
 
 # Set the desktop background
 exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/* &
-# exec --no-startup-id feh --bg-fill --randomize ~/Downloads/Backgrounds/* &
 
-
-# Uncomment the following line to get random wallpepers from the specified directory
-# exec feh --bg-fill --randomize ~/.config/Backgrounds/* &
-
-# >>> Plasma Integration <<<
-  # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everything)
-  
-#exec --no-startup-id wmctrl -c Plasma
-#for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-# Compositor (Animations, Shadows, Transparency)
 exec --no-startup-id picom -cb
+
+# swap escape with windows ey
 
 # >>> Window rules <<<
 # >>> Avoid tiling Plasma popups, dropdown windows, etc. <<<
@@ -331,7 +330,7 @@ exec --no-startup-id picom -cb
 #for_window [window_role="bubble"] floating enable
 #for_window [window_role="task_dialog"] floating enable
 #for_window [window_role="Preferences"] floating enable
-#for_window [window_role="About"] floating enable
+#for_window [win:dow_role="About"] floating enable
 #for_window [window_type="dialog"] floating enable
 #for_window [window_type="menu"] floating enable
 #for_window [instance="__scratchpad"] floating enable
@@ -360,4 +359,3 @@ exec --no-startup-id picom -cb
 
 
 # # Start the compositor daemonizing it (-b) and enabling shadows (-c)
-# exec_always --no-startup-id picom -cb
