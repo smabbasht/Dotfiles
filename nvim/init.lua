@@ -54,27 +54,16 @@ require('packer').startup(function(use)
 
   ---- plugins_--------------------------------------------------------------------
 
-  -- use 'nvim-tree/nvim-web-devicons'
   use 'github/copilot.vim'
-  -- use 'rafamadriz/friendly-snippets'
   use 'tiagovla/tokyodark.nvim'
   use 'xiyaowong/nvim-transparent'
   use 'mbbill/undotree'
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   use 'lervag/vimtex' -- LaTeX support
-  -- use 'SirVer/ultisnips'
-  -- use 'olimorris/onedarkpro.nvim'
-  -- require('coc').setup(
-  --   {
-  --     "coc-python",
-  --     "coc-clangd",
-  --   }
-  -- )
-  -- use {
-  --   'marioortizmanero/adoc-pdf-live.nvim',
-  --   config = "require('adoc_pdf_live').setup()"
-  -- }
+
+  require('nvim-autopairs').setup()
+
   use {
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
@@ -85,46 +74,12 @@ require('packer').startup(function(use)
     end,
     requires = {'nvim-tree/nvim-web-devicons'}
   }
-  --
-  ---------- Other Minor Cofigurations (this code block works only here right now, will fix it hopefuly) ------------
-  --
-  -- Path for python
-  vim.g.python3_host_prog = '/usr/bin/python3'
-
-  -- Vim Commands
-  vim.opt.incsearch = true -- search as you type
-  vim.opt.hlsearch = true  -- highlight search results
-  vim.cmd [[set cursorline]]
-  vim.cmd [[set noswapfile]]
-  vim.cmd [[set relativenumber]]
-  vim.cmd [[set scrolloff=10]]
-  vim.cmd [[set numberwidth=4]]
-  -- set width of color column 
-
-  -- vim.api.nvim_command([[ autocmd VimLeave * :silent !kitty @ set-spacing padding=20 margin=10 ]])
-  -- vim.cmd [[
-  --   augroup kitty_mp
-  --     autocmd!
-  --     au VimLeave * :silent !kitty @ set-spacing padding=4
-  --     au VimEnter * :silent !kitty @ set-spacing padding=0
-  --   augroup END
-  -- ]]
-  -- vim.cmd [[TransparentEnable]]
-
-  -- Colorscheme
-  -- vim.cmd [[colorscheme tokyodark]]
-  -- vim.g.tokyodark_enable_italic = true
-  -- vim.g.tokyodark_enable_bold = true
-  -- vim.o.termguicolors = true
-  -- vim.g.tokyodark_transparent_background = true
-  -- vim.g.tokyodark_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' }
-
-
-  --------x plugins x-----------------------------------------------------------------------------------------------
-
   -- Flutter
   --use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
   --require("flutter-tools").setup {} -- use defaults
+  
+  --------x plugins x-------------------------------------------------------------
+
 
   -- Snippets
   use {
@@ -139,40 +94,6 @@ require('packer').startup(function(use)
   use {'Shougo/neosnippet.vim'}
   use {'Shougo/neosnippet-snippets'}
 
-  --
-  -- use { 'Shougo/neosnippet.vim'}
-  -- use { 'Shougo/neosnippet-snippets'}
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  -- refer to the configuration section below
-  -- -- Enable neosnippet for python files
-  -- vim.g.neosnippet_snippets_directory = '~/.config/nvim/snippets/'
-  -- vim.g.neosnippet_disable_runtime_snippets = 0
-  -- vim.g.neosnippet_filetype_map = { python = 'python.snippets' }
-  -- vim.g.neosnippet_filetype_suppress = {}
-  -- vim.g.neosnippet.snippets_directory = vim.fn.expand("~/.config/nvim/snippets")
-
-  -- use {
-  --   'SirVer/ultisnips',
-  --   config = function()
-  --     vim.g.UltiSnipsExpandTrigger = '<tab>'
-  --     vim.g.UltiSnipsJumpForwardTrigger = '<c-b>'
-  --     vim.g.UltiSnipsJumpBackwardTrigger = '<c-z>'
-  --
-  --     -- Python snippets
-  --     vim.g.python_highlight_all = 1
-  --     vim.g.UltiSnipsSnippetDirectories = { 'UltiSnips' }
-  --     vim.g.UltiSnipsFiletypes = {
-  --       python = { 'python' },
-  --       c = { 'c' },
-  --       cpp = { 'cpp' },
-  --       cuda = { 'cuda' },
-  --       dart = { 'dart' }
-  --     }
-  --   end,
-  --   requires = 'honza/vim-snippets'
-  -- }
-  --
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
@@ -327,19 +248,28 @@ require('telescope').setup {
 }
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+
+vim.keymap.set('n', '<leader>sp', require('telescope.builtin').find_files, { desc = '[S]earch [P]roject' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+
+-- Remaps I added
+vim.keymap.set('n', '<leader>sf', function()
+  require('telescope.builtin').find_files(
+    { cwd = os.getenv("HOME"),
+      hidden = true }
+  )
+end, { desc = '[S]earch [F]iles' })
+------------------
+
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -420,25 +350,17 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 ---- Config_ ------------------------------------------------------------
 
--- Setups for Plgins
 
-require('nvim-autopairs').setup()
--- require('nvim-autopairs.completion.cmp').setup({
---   map_cr = true, --  map <CR> on insert mode
---   map_complete = true, -- it will auto insert `(` after select function or method item
---   auto_select = true, -- automatically select the first item
--- })
--- setup for vim-surround
--- require('vim-surround').setup({
---   mappings_style = 'surround',
--- })
+-- Source init.lua
+vim.keymap.set('n', '<leader>_', function()
+  vim.cmd('source $MYVIMRC')
+end, { desc = '[S]ource [V]imrc' })
 
 -- No-op the arrow keys
 vim.keymap.set({'n', 'v', 'i'}, '<Up>', '<nop>')
 vim.keymap.set({'n', 'v', 'i'}, '<Down>', '<nop>')
 vim.keymap.set({'n', 'v', 'i'}, '<Left>', '<nop>')
 vim.keymap.set({'n', 'v', 'i'}, '<Right>', '<nop>')
-
 
 -- map H to 'Hzz' and L to 'Lzz
 vim.keymap.set({ 'n', 'v' }, 'H', 'Hzz')
@@ -447,8 +369,6 @@ vim.keymap.set({ 'n', 'v' }, 'L', 'Lzz')
 vim.keymap.set('n', '<leader>q', vim.cmd.bdelete)
 vim.keymap.set('n', '<leader>l', vim.cmd.bnext)
 vim.keymap.set('n', '<leader>h', vim.cmd.bprevious)
--- map windows key to esc in insert mode
--- vim.cmd [[inoremap <CR> <Esc>]]
 
 -- Browse Files
 vim.keymap.set('n', '<leader>bf', vim.cmd.Vex)
@@ -456,26 +376,47 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- Toggle Transparency
 vim.keymap.set('n', '<leader>tt', vim.cmd.TransparentToggle, { silent = true }) -- toggle transparent
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" }) -- transparent background
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) -- transparent background
+vim.keymap.set("v", "<leader>y", [["+y"<CR>]]) -- copy to system clipboard
+-- vim.keymap.set("n", "<leader>y", [["+y"<CR>]]) -- copy to system clipboard
 
--- Keymap to copy to system clipboard
--- The keymap below copies the whole line instead of copying only the selection, add similar keymap to <leader>Y to make it copy only the selection
--- vim.keymap.set("v", "<leader>y", ":w !xclip -i -sel c\n<leader>") -- copy to system clipboard
-vim.keymap.set("v", "<leader>y", ":w !xclip -i -sel c \n\n")
---
--- Primeagen's Keymaps
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- search and replace
-vim.keymap.set("n", "<F5>", vim.lsp.buf.format)                                          -- [f]ormat the Buffer
+vim.keymap.set("v", "<leader>p", [["_dP]])
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")              -- Open previous sessions through tmux
+vim.keymap.set("v", "J", [[:m '>+1<CR>gv=gv]])
+vim.keymap.set("v", "K", [[:m '>-2<CR>gv=gv]])
 
+vim.keymap.set({"n", "v"}, "<leader>op", [[o<esc>p]])
+vim.keymap.set({"n", "v"}, "<leader>Op", [[O<esc>p]])
 
---
--- LaTeX related settings
--- require('adoc_pdf_live').setup()
--- vim.keymap.set("n", "<leader>lt", vim.cmd.AdocPdfLiveStart) -- Open previous sessions through tmux
---
+-- vim.keymap.set("n", "<leader>s", [[:w<CR>]] ) -- search and replace
+vim.keymap.set("i", "<C-s>", [[<esc>:w<CR>li]] ) -- search and replace
+vim.keymap.set("n", "<C-s>", [[:w<CR>]] ) -- search and replace
+
+-- [f]ormat the Buffer
+vim.keymap.set("n", "<F5>", vim.lsp.buf.format)
+
+-- See registers 
+vim.keymap.set("n", "<leader>r", [[:registers<CR>]])
+
+-- Delete untill the beginning of the line
+vim.keymap.set("n", "K", [[c^]])
+
+-- Path for python
+vim.g.python3_host_prog = '/usr/bin/python3'
+
+-- disable mouse
+vim.cmd [[set mouse=]]
+
+-- Vim Commands
+vim.opt.incsearch = true -- search as you type
+vim.opt.hlsearch = true  -- highlight search results
+vim.cmd [[nohls]]
+vim.cmd [[set cursorline]]
+vim.cmd [[set noswapfile]]
+vim.cmd [[set relativenumber]]
+vim.cmd [[set scrolloff=10]]
+vim.cmd [[set numberwidth=4]]
+-- set width of color column 
+
 -----x Config x-----------------------------------------------------------
 
 
@@ -524,61 +465,7 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {}
---   clangd = {},
---   pyright = {
---     settings = {
---       python = {
---         analysis = {
---           typeCheckingMode = 'off',
---           autoSearchPaths = true,
---           useLibraryCodeForTypes = true,
---         },
---       },
---     },
---   },
---   prosemd_lsp = {},
---   remark_ls = {},
---   lua_ls = {},
--- dartls = {
---   settings = {
---     dart = {
---       sdkPath = '/usr/lib/dart',
---     },
---   },
--- },
---
-
--- dartls = {
---   settings = {
---     dart = {
---       sdkPath = '/usr/lib/dart',
---     },
---   },
--- },
--- ltex = {},
--- ltex-ls = {},
--- python_language_server = {},
--- prosemd_language_server = {},
--- remark_language_server = {},
--- lua_language_server = {},
--- gopls = {},
--- pyright = {},
--- rust_analyzer = {},
--- tsserver = {},
-
--- sumneko_lua = {
---   Lua = {
---     workspace = { checkThirdParty = false },
---     telemetry = { enable = false },
---   },
--- },
--- }
 
 -- Setup neovim lua configuration
 require('neodev').setup()

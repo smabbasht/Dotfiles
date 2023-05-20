@@ -1,13 +1,10 @@
 set -U fish_greeting ""
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 if status --is-login
     set -gx PATH $PATH ~/linux/bin
 end
 
+echo "  "
 neofetch
 fish_add_path ~/swift-n
 
