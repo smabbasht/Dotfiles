@@ -14,7 +14,8 @@ function n {
     local query=""
 
     if [ "$#" -eq 2 ]; then
-        directory=$(zoxide query "$1")
+        # if  zoxides returns error, assign HOME to directory
+        directory=$(zoxide query "$1") || directory="$HOME"
         query="$2"
         cd "$directory"
         if [ "$2" == "." ]; then
