@@ -139,7 +139,7 @@ bindsym $mod+d exec --no-startup-id "rofi -i -show drun -modi drun -show-icons"
 # search for files too
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show run"
 
-exec --no-startup-id ~/.config/scripts/swap_win_esc.sh
+exec --no-startup-id ~/.config/scripts/swap_caps_esc.sh
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -305,7 +305,7 @@ bindsym Print exec --no-startup-id flameshot gui
 exec_always ~/.config/polybar/launch.sh &
 
 # Set the desktop background
-exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/* &
+exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/*.jpg &
 
 exec --no-startup-id picom -cb
 

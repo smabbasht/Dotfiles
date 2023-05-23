@@ -5,7 +5,7 @@ if status --is-login
 end
 
 echo "  "
-neofetch
+# neofetch
 fish_add_path ~/swift-n
 
 set randNum (random 1 1 104)

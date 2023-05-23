@@ -1,4 +1,4 @@
-function sd --wraps=du\ -a\ \~/Desktop/\ \|\ awk\ \'\{print\ \}\'\ \|\ fzf\ \|\ xargs\ -r\ nvim --description alias\ sd\ du\ -a\ \~/Desktop/\ \|\ awk\ \'\{print\ \}\'\ \|\ fzf\ \|\ xargs\ -r\ nvim
-  du -a ~/Desktop/ | awk '{print }' | fzf | xargs -r nvim $argv
+function sd --wraps='cd $(fd -H ~ -type d | fzf)' --wraps='cd $(fd -H ~ --type directory | fzf)' --wraps='cd $(fd . -H --type directory | fzf)' --description 'alias sd cd $(fd . -H --type directory | fzf)'
+  cd $(fd . -H --type directory | fzf) $argv
         
 end
