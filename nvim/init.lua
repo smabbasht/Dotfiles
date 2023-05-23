@@ -11,11 +11,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 --set mouse=
---
-
 
 require('packer').startup(function(use)
-
   -- Package manager
   use 'wbthomason/packer.nvim'
 
@@ -64,7 +61,6 @@ require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
   use 'lervag/vimtex' -- LaTeX support
-  use 'jremmen/vim-ripgrep'
 
   require('nvim-autopairs').setup()
 
@@ -404,9 +400,8 @@ vim.keymap.set("n", "<leader>r", [[:registers<CR>]])
 -- Delete untill the beginning of the line
 vim.keymap.set("n", "B", [[c^]])
 
--- cnext and cprev
-vim.keymap.set({ "n", "i" }, "<C-j>", [[:cnext<CR>]])
-vim.keymap.set({ "n", "i" }, "<C-k>", [[:cprev<CR>]])
+-- Make current file executable 
+vim.keymap.set("n", "<leader>x", "[[:!chmod +x %<CR><CR>]]")
 
 -- Path for python
 vim.g.python3_host_prog = '/usr/bin/python3'
