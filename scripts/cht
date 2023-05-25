@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-languages=$(echo "python c cpp dart bash" | tr " " "\n")
+languages=$(echo "git python c cpp dart bash" | tr " " "\n")
 core_utils=$(echo "cat chmod chown cp cut date dd df du echo env expr false head id kill ln ls mkdir mv pwd rm rmdir sleep sort tee test touch true uname uniq wc yes awk sed grep find xargs" | tr " " "\n")
 selected=$(echo -e "$languages\n$core_utils" | fzf)
 read -p "Gimme your query: " query 
