@@ -1,3 +1,13 @@
+cubocore
+coreapps
+ephoto
+gh-dash
+nvim/plugin
+stacer
+lvim/*
+Backgrounds/subfolder/*
+spacer/*
+akonad*
 Mailspring/blob_storage
 Mailspring/compile-cache
 Mailspring/Cookies

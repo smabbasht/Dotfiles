@@ -47,6 +47,9 @@ return require('packer').startup(function(use)
     use('hoob3rt/lualine.nvim')
     use('kyazdani42/nvim-web-devicons')
 
+    -- CoC
+    use('neoclide/coc.nvim', { branch = 'release' })
+
     -- LSP ZERO
     use {
         'VonHeikemen/lsp-zero.nvim',
