@@ -66,15 +66,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-# bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-# bindsym XF86MonBrightnessDown exec xbacklight -dec 5
-# bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 3
-# bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 1
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id bash -c 'b=$(xrandr --verbose | grep -i brightness | head -n 1 | cut -d" " -f2) && b2=$(echo -e "import math\nf = lambda x: (1 - 1/(1+math.exp(4*x-2)))\nprint(\"%.2f\" % f(0.1+$b))" | python) && xrandr --output eDP1 --brightness $b2'
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id bash -c 'b=$(xrandr --verbose | grep -i brightness | head -n 1 | cut -d" " -f2) && b2=$(echo -e "import math\nf = lambda x: (1 - 1/(1+math.exp(4*x-2)))\nprint(\"%.2f\" % f(-0.1+$b))" | python) && xrandr --output eDP1 --brightness $b2'
+bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
+bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
 
-# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
