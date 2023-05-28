@@ -81,12 +81,12 @@ keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
 -- Remap keys for applying codeActions to the current buffer
 keyset("n", "<leader>ac", "<Plug>(coc-codeaction)", opts)
 -- Apply the most preferred quickfix action on the current line.
-keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
+keyset("n", "<leader>fc", "<Plug>(coc-fix-current)", opts)
 
 -- Remap keys for apply refactor code actions.
 keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", { silent = true })
-keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
-keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+-- keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+-- keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
 
 -- Run the Code Lens actions on the current line
 keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)

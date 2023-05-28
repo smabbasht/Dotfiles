@@ -66,8 +66,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
-bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
+bindsym Shift+XF86MonBrightnessDown exec bash ~/.config/scripts/bdown
+bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
+# bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
+# bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -299,7 +301,7 @@ bindsym Print exec --no-startup-id flameshot gui
 exec_always ~/.config/polybar/launch.sh &
 
 # Set the desktop background
-exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/*.jpg &
+exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/curr*/quote*/*.jpg &
 
 exec --no-startup-id picom -cb
 
