@@ -14,6 +14,21 @@ return require('packer').startup(function(use)
     }
 
     -- Using Packer
+    -- Themes
+
+    -- onedarkpro
+    -- Packer
+    use({
+        "olimorris/onedarkpro.nvim",
+        as = 'onedarkpro',
+        config = function()
+            vim.cmd [[colorscheme onedarkpro]]
+        end
+    })
+
+    -- somewhere in your config:
+    -- vim.cmd("colorscheme onedark")
+
     use({
         'navarasu/onedark.nvim',
         as = 'onedark',
@@ -33,6 +48,8 @@ return require('packer').startup(function(use)
         end
     })
 
+
+    -- Other Plugins
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
@@ -49,6 +66,9 @@ return require('packer').startup(function(use)
 
     -- CoC
     use('neoclide/coc.nvim', { branch = 'release' })
+
+    -- Track
+    use('wakatime/vim-wakatime')
 
     -- LSP ZERO
     use {

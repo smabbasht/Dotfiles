@@ -26,14 +26,17 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.numberwidth = 4
+vim.o.numberwidth = 1
 vim.opt.cursorline = true
 
-vim.cmd.mouse = false
+vim.opt.mouse = ""
 
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 vim.g.mapleader = " "
+vim.g.transparent_enabled = true
+
+vim.g.surround_no_insert_space = 1
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
