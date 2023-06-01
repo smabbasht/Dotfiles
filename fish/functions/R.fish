@@ -1,4 +1,4 @@
-function R --wraps='sudo pacman -Rs' --description 'alias R sudo pacman -Rs'
-  sudo pacman -Rs $argv
+function R --wraps='sudo pacman -Rns' --description 'alias R sudo pacman -Rns'
+  sudo pacman -Rns $argv
         
 end

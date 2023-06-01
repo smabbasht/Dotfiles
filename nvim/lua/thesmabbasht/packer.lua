@@ -15,36 +15,11 @@ return require('packer').startup(function(use)
 
     -- Using Packer
     -- Themes
-
-    -- onedarkpro
-    -- Packer
     use({
         "olimorris/onedarkpro.nvim",
-        as = 'onedarkpro',
-        config = function()
-            vim.cmd [[colorscheme onedarkpro]]
-        end
-    })
-
-    -- somewhere in your config:
-    -- vim.cmd("colorscheme onedark")
-
-    use({
-        'navarasu/onedark.nvim',
         as = 'onedark',
         config = function()
-            vim.g.onedark_style = 'deep'
-            vim.g.onedark_transparent_background = 1
             vim.cmd [[colorscheme onedark]]
-        end
-    })
-
-    use({
-        'tiagovla/tokyodark.nvim',
-        as = 'tokyodark',
-        config = function()
-            vim.g.tokyodark_style = 'night'
-            vim.cmd [[colorscheme tokyodark]]
         end
     })
 
@@ -63,6 +38,8 @@ return require('packer').startup(function(use)
     use('numToStr/Comment.nvim')
     use('hoob3rt/lualine.nvim')
     use('kyazdani42/nvim-web-devicons')
+
+
 
     -- CoC
     use('neoclide/coc.nvim', { branch = 'release' })
