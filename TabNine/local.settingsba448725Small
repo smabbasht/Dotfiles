@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "kind": "LocalSettings",
+  "body": {
+    "cpu_model": {
+      "rate_limit_interval_seconds": null,
+      "rate_limit_amount": null,
+      "enable_power_saving_mode": false
+    },
+    "download": {
+      "api_key": null,
+      "meta_data_base_url": "https://api.tabnine.com",
+      "model": {
+        "modelId": "f510e7fcff5f368dfceac3d745628c3b4d07bf563341494c25d5949d2f69a20e",
+        "uploadTime": "2022-01-10T18:36:58+00:00",
+        "crc32OverFileWithoutHeaders": "ba448725",
+        "modelSize": "Small",
+        "ownedByTeamId": null,
+        "specializedForLanguage": "julia",
+        "sourceType": null,
+        "displayName": null,
+        "isProductionReady": true,
+        "isManuallySelectable": false
+      }
+    },
+    "tune": {
+      "enable_power_saving_mode": false,
+      "override_beams": null,
+      "override_context_length": null
+    },
+    "run": {
+      "is_enabled": true,
+      "omit_prefix_suggestions": false,
+      "line_suggestions": false
+    }
+  }
+}

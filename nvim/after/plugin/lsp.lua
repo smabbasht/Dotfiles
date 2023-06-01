@@ -1,9 +1,15 @@
 local lsp = require('lsp-zero').preset({})
 
 lsp.ensure_installed({
+  -- python, c, latex, markdown, bash, fish, lua, yaml, toml
   'pyright',
-  'pylsp', 
   'clangd',
+  -- 'lua-language-server',
+  -- 'bash-language-server',
+  'texlab', 
+  -- 'prosemd-lsp',
+  'taplo', 
+  -- 'yaml-language-server',
 })
 
 -- Fix Undefined global 'vim'

@@ -36,7 +36,8 @@ exec --no-startup-id cbatticon
 # locate cursor
 # set $ctrl 37
 # bindcode  $mod+$ctrl exec "DISPLAY=:0 ~/.local/bin/find-cursor -c orange -f"
-bindsym  F7 exec "DISPLAY=:0 find-cursor -c orange -f"
+# bind below command with windows key 
+bindsym Mod4 exec "DISPLAY=:0 find-cursor -c orange -f"
 
 
 # change language
@@ -99,7 +100,7 @@ bindsym $mod+o exec okular
 bindsym $mod+x exec thunar
 
 # open mailspring
-bindsym $mod+m exec mailspring
+# bindsym $mod+m exec mailspring
 
 
 # Fix dialog window size in browser
@@ -120,9 +121,10 @@ bindsym $mod+m exec mailspring
 bindsym $mod+i exec --no-startup-id "i3lock-fancy -t 'Yes, I know, I look so good..!'"
 bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy -t 'Haha, We caught you sneaking, It is locked now'"
 
-# bindsym $mod+y exec '~/Android/Sdk/emulator/emulator -avd Nexus -gpu host' 
-# open simplenotes
-bindsym $mod+n exec flatpak run com.simplenote.Simplenote
+# open notes
+# bindsym $mod+n exec flatpak run com.simplenote.Simplenote
+bindsym $mod+n exec ~/AppImages/Obsidian-1.3.4.AppImage
+# bindsym $mod+n workspace 9; exec ~/AppImages/Obsidian-1.3.4.AppImage --no-startup-id
 
 # kill focused window
 bindsym $mod+q kill
@@ -243,6 +245,18 @@ bindsym $mod+Shift+r restart
 gaps inner 5
 gaps outer 5
 # smart_gaps on
+
+# Assign workspaces to softwares
+# assign [class="kitty"]           $ws1
+assign [class="Brave"]           $ws2
+assign [class="Thunar"]          $ws3
+assign [class="zoom"]            $ws4
+assign [class="Spotify"]         $ws4
+assign [class="Microsoft Teams"] $ws5
+assign [class="Stremio"]         $ws6
+assign [class="obsidian"]        $ws9
+
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

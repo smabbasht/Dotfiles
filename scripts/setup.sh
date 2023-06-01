@@ -96,7 +96,10 @@ awk '/neofetch/{print;print "fish_add_path ~/swift-n";next}1' ~/.config/fish/con
 
 
 # Running PackerSync for Neovim
+yay -S --noconfirm nvim-packer-git
+mv ~/.config/nvim/after ~/.config/nvim/temp
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+mv ~/.config/nvim/temp ~/.config/nvim/after
 
 # setup tmux
 mkdir -p ~/.tmux/plugins

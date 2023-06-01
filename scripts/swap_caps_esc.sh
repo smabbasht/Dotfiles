@@ -1,8 +1,6 @@
 #!/bin/bash
 
-xmodmap -e 'keycode 133 = F7'
+# bind caps lock with Escape and escape key with caps lock, clear the default operation of both 
 xmodmap -e 'keycode 66 = Escape'
-xmodmap -e 'clear Lock'
-
-# bind Escape key with F7
 xmodmap -e 'keycode 9 = Caps_Lock'
+xmodmap -e 'clear Lock'
