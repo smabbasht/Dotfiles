@@ -4,7 +4,7 @@ if status --is-login
     set -gx PATH $PATH ~/linux/bin
 end
 
-echo "  "
+# echo "  "
 # neofetch
 
 set -gx SUCCESS_SYMBOL "🐟"

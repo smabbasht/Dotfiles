@@ -67,10 +67,10 @@ bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
 # bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
 # bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym Shift+XF86MonBrightnessDown exec bash ~/.config/scripts/bdown
-bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
+# bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+# bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+# bindsym Shift+XF86MonBrightnessDown exec bash ~/.config/scripts/bdown
+# bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -81,7 +81,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec kitty
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # open brave browser 
 bindsym $mod+b exec brave

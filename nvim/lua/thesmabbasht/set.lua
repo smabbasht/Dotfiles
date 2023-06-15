@@ -47,3 +47,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- Reduce Alacritty padding when entering Neovim
+vim.cmd([[
+  autocmd VimEnter * silent! !sed -i -E '/padding:/,/x: [0-9]+/ s/(x|y): [0-9]+/\1: 0/' ~/.config/alacritty/alacritty.yml | alacritty --daemonize
+]])
+
+-- Increase Alacritty padding when exiting Neovim
+vim.cmd([[
+  autocmd VimLeave * silent! !sed -i -E '/padding:/,/x: [0-9]+/ s/(x|y): [0-9]+/\1: 8/' ~/.config/alacritty/alacritty.yml | alacritty --daemonize
+]])
+
