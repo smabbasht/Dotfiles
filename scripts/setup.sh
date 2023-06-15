@@ -61,7 +61,7 @@ sudo sed -i 's/ForceHideCompletePassword=.*/ForceHideCompletePassword=true/g' /u
 sudo awk '/Identifier "libinput touchpad catchall"/{print;print "        Option \"ScrollMethod\" \"twofinger\"";print "        Option \"NaturalScrolling\" \"true\"";print "        Option \"Tapping\" \"on\"";print "        Option \"TappingButtonMap\" \"lrm\"";next}1' /usr/share/X11/xorg.conf.d/40-libinput.conf > tmp && sudo mv tmp /usr/share/X11/xorg.conf.d/40-libinput.conf
 
 # Install lxappearance to set themes
-sudo pacman -S lxappearance --noconfirm
+sudo pacman -S lxappearance lxsession --noconfirm
 
 # Enable Network Manager
 sudo pacman -S networkmanager --noconfirm

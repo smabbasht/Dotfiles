@@ -36,22 +36,17 @@ exec --no-startup-id cbatticon
 # locate cursor
 # set $ctrl 37
 # bindcode  $mod+$ctrl exec "DISPLAY=:0 ~/.local/bin/find-cursor -c orange -f"
-# bind below command with windows key 
-bindsym Mod4 exec "DISPLAY=:0 find-cursor -c orange -f"
-
+# bind release of amod with command below
+bindsym F7 exec "DISPLAY=:0 find-cursor -c orange -f"
 
 # change language
 exec_always "setxkbmap -model pc104 -layout us,ur -variant ,, -option grp:alt_shift_toggle"
 
-# # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# polkit lxsession exec in i3 
+exec --no-startup-id lxsession
 
 # clipboard applet
 exec parcellite --no-startup-id
-
-# start mechvibes on startup 
-
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -69,9 +64,6 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym Shift+XF86MonBrightnessDown exec bash ~/.config/scripts/bdown
 bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
-# bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
-# bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -87,8 +79,14 @@ bindsym $mod+Return exec kitty
 # open brave browser 
 bindsym $mod+b exec brave
 
+# open Spotify
+bindsym $mod+Shift+s exec spotify
+
 # open Clion
-bindsym $mod+c exec clion
+# bindsym $mod+c exec clion
+
+# open teams 
+bindsym $mod+Shift+t exec teams
 
 # open whatsapp 
 bindsym $mod+o exec okular 
@@ -118,8 +116,8 @@ bindsym $mod+x exec thunar
 # I have a fish script that returns a random quote from a file and I want to get the quote with i3lock-fancy as as argument for it's -t option, please write a command that does that
 
 
-bindsym $mod+i exec --no-startup-id "i3lock-fancy -t 'Yes, I know, I look so good..!'"
-bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy -t 'Haha, We caught you sneaking, It is locked now'"
+bindsym $mod+i exec --no-startup-id "i3lock-fancy -t 'The system is locked..!'"
+bindsym $mod+Shift+i exec --no-startup-id "i3lock-fancy -t 'The system is locked..!' && systemctl suspend"
 
 # open notes
 # bindsym $mod+n exec flatpak run com.simplenote.Simplenote
@@ -197,7 +195,7 @@ bindsym $mod+a focus parent
 # Disable cursor focusing 
 focus_follows_mouse no
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -254,6 +252,7 @@ assign [class="zoom"]            $ws4
 assign [class="Spotify"]         $ws4
 assign [class="Microsoft Teams"] $ws5
 assign [class="Stremio"]         $ws6
+assign [class="motrix"]         $ws6
 assign [class="obsidian"]        $ws9
 
 

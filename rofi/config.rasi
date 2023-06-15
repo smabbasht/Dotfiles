@@ -3,7 +3,18 @@ configuration {
  font: "hack 10";
  combi-modi: "window,drun,ssh";
  }
-@theme "~/.config/rofi/themes/dt-center.rasi"
+//@theme "~/.config/rofi/themes/dt-center.rasi"
 
 
 
+//@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
+//@theme "/usr/share/rofi/themes/DarkBlue.rasi"
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+//@theme "/usr/share/rofi/themes/android_notification.rasi"
+//@theme "/usr/share/rofi/themes/solarized.rasi"
+//@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
+//@theme "/usr/share/rofi/themes/paper-float.rasi"
+//@theme "/usr/share/rofi/themes/dmenu.rasi"
+//@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
+//@theme "/usr/share/rofi/themes/iggy.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"

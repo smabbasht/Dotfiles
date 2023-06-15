@@ -1,8 +1,9 @@
 # ~/.config/starship.toml
 
 [character]
-success_symbol = "🐟"
-error_symbol   = "💀"
+success_symbol = "⚡"
+error_symbol = "💀"
+
 
 [cmd_duration]
 min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)

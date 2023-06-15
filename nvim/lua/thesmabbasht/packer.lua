@@ -20,7 +20,16 @@ return require('packer').startup(function(use)
         as = 'onedark',
         config = function()
             vim.cmd [[colorscheme onedark]]
-        end
+        end,
+        require("onedarkpro").setup {
+            highlights = {
+                netrwDir = {
+                    fg = "#ffc45f",
+                    gui = "bold,italic,underline",
+                },
+            }
+        }
+
     })
 
 
@@ -28,6 +37,7 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
+    use('prichrd/netrw.nvim')
     use('tpope/vim-fugitive')
     use('lewis6991/gitsigns.nvim')
     use('github/copilot.vim')

@@ -6,7 +6,8 @@ end
 
 echo "  "
 # neofetch
-fish_add_path ~/swift-n
+
+set -gx SUCCESS_SYMBOL "🐟"
 
 set randNum (random 1 1 104)
 #echo $randNum
@@ -27,7 +28,10 @@ function prompt
 end
 
 # Call the prompt function
-prompt
+# prompt
+
+# source rust env 
+# source "$HOME/.cargo/env"
 
 export $(dbus-launch)
 fish_add_path $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
