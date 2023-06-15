@@ -30,9 +30,6 @@ end
 # Call the prompt function
 # prompt
 
-# source rust env 
-# source "$HOME/.cargo/env"
-
 export $(dbus-launch)
 fish_add_path $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
 # bash ~/.config/scripts/remind.sh

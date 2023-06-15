@@ -64,6 +64,13 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym Shift+XF86MonBrightnessDown exec bash ~/.config/scripts/bdown
 bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
+# bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
+# bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym Shift+XF86MonBrightnessDown exec bash ~/.config/scripts/bdown
+bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -252,7 +259,6 @@ assign [class="zoom"]            $ws4
 assign [class="Spotify"]         $ws4
 assign [class="Microsoft Teams"] $ws5
 assign [class="Stremio"]         $ws6
-assign [class="motrix"]         $ws6
 assign [class="obsidian"]        $ws9
 
 
