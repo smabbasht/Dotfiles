@@ -95,6 +95,12 @@ cd swift-n
 awk '/neofetch/{print;print "fish_add_path ~/swift-n";next}1' ~/.config/fish/config.fish > tmp && mv tmp ~/.config/fish/config.fish
 
 
+# bash 
+yay -S blesh --noconfirm 
+ln  -s ~/.config/bash/.blerc ~/.blerc
+ln  -s ~/.config/bash/.bashrc ~/.bashrc
+
+
 # Running PackerSync for Neovim
 yay -S --noconfirm nvim-packer-git
 mv ~/.config/nvim/after ~/.config/nvim/temp

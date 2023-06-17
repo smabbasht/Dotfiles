@@ -1,4 +1,4 @@
-function sh --wraps=du\ -a\ \~/\ \|\ awk\ \'\{print\ \}\'\ \|\ fzf\ \|\ xargs\ -r\ nvim --description alias\ sh\ du\ -a\ \~/\ \|\ awk\ \'\{print\ \}\'\ \|\ fzf\ \|\ xargs\ -r\ nvim
-  du -a ~/ | awk '{print }' | fzf | xargs -r nvim $argv
+function sh --wraps=du\ -a\ \~/\ \|\ awk\ \'\{print\ \}\'\ \|\ fzf\ \|\ xargs\ -r\ nvim --wraps='history | fzf' --description 'alias sh history | fzf'
+  history | fzf $argv
         
 end

@@ -3,6 +3,7 @@
 [character]
 success_symbol = "⚡"
 error_symbol = "💀"
+disabled = true
 
 
 [cmd_duration]
@@ -30,7 +31,7 @@ disabled = true
 
 [python]
 format = "[$symbol$version]($style) "
-style = "bold green"
+style = "bold blue"
 
 [dart]
 format = "[$symbol$version]($style) "
@@ -38,7 +39,15 @@ style = "bold green"
 
 [rust]
 format = "[$symbol$version]($style) "
-style = "bold green"
+style = "bold red"
+
+[shell]
+fish_indicator = '🐬'
+bash_indicator = ' '
+unknown_indicator = 'mystery shell'
+style = 'bold yellow'
+disabled = false
+format = '[$indicator]($style) '
 
 [username]
 format = "[$user]($style) "

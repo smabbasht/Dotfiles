@@ -52,6 +52,8 @@ exec parcellite --no-startup-id
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+bindsym Print exec --no-startup-id flameshot gui
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -96,7 +98,7 @@ bindsym $mod+Shift+s exec spotify
 bindsym $mod+Shift+t exec teams
 
 # open whatsapp 
-bindsym $mod+o exec okular 
+bindsym $mod+o exec mupdf
 
 # open whatsapp 
 # bindsym $mod+Shift+w exec whatsapp-for-linux
@@ -308,7 +310,6 @@ for_window [class="^.*"] border pixel 0
 #
 # # OSX-like area selection screenshots
 # bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
-bindsym Print exec --no-startup-id flameshot gui
 
 # # gnome polickit authentivation
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

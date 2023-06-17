@@ -1,0 +1,11 @@
+# blerc
+
+# ble-0.4+ (edit: 2022-12-04, fix 2023-02-10)
+ble-face auto_complete='fg=242,bg=235'
+ble-face auto_complete='fg=white,bg=69'
+ble-face auto_complete='fg=240,underline,italic'
+
+# ble-0.3
+ble-color-setface auto_complete fg=242,bg=235
+ble-color-setface auto_complete fg=white,bg=69
+ble-color-setface auto_complete fg=240,underline,italic
