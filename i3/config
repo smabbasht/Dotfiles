@@ -253,14 +253,14 @@ gaps inner 5
 gaps outer 5
 # smart_gaps on
 
-# Assign workspaces to softwares
-# assign [class="kitty"]           $ws1
+# Assign apps to workspaces
+# assign [class="Thunar"]          $ws3
 assign [class="Brave"]           $ws2
-assign [class="Thunar"]          $ws3
 assign [class="zoom"]            $ws4
 assign [class="Spotify"]         $ws4
 assign [class="Microsoft Teams"] $ws5
 assign [class="Stremio"]         $ws6
+assign [class="Anydesk"]         $ws7
 assign [class="obsidian"]        $ws9
 
 
@@ -269,10 +269,6 @@ assign [class="obsidian"]        $ws9
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 1 px or 1 ppt
         bindsym j resize grow height 1 px or 1 ppt
         bindsym k resize shrink height 1 px or 1 ppt

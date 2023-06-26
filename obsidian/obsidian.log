@@ -136,3 +136,30 @@
 2023-05-30 14:26:28 Latest version is 1.3.4
 2023-05-30 14:26:28 App is up to date.
 2023-05-30 14:26:28 Checking for update using Github
+2023-06-17 13:42:27 Loading updated app package /home/smabbasht/.config/obsidian/obsidian-1.3.5.asar
+2023-06-17 13:42:28 Checking for update using Github
+2023-06-17 13:42:29 Success.
+2023-06-17 13:42:29 Latest version is 1.3.5
+2023-06-17 13:42:29 App is up to date.
+2023-06-18 08:52:12 Loading updated app package /home/smabbasht/.config/obsidian/obsidian-1.3.5.asar
+2023-06-18 08:52:13 Checking for update using Github
+2023-06-18 08:52:13 Failed to check for update using Github (net::ERR_INTERNET_DISCONNECTED)
+2023-06-18 08:52:13 Checking for update using obsidian.md
+2023-06-18 08:52:13 Failed to check for update using obsidian.md (net::ERR_INTERNET_DISCONNECTED)
+2023-06-19 04:55:53 Loading updated app package /home/smabbasht/.config/obsidian/obsidian-1.3.5.asar
+2023-06-19 04:55:54 Checking for update using Github
+2023-06-19 04:55:54 Failed to check for update using Github (net::ERR_NAME_NOT_RESOLVED)
+2023-06-19 04:55:54 Checking for update using obsidian.md
+2023-06-19 04:55:54 Failed to check for update using obsidian.md (net::ERR_NAME_NOT_RESOLVED)
+2023-06-21 10:22:27 Loading updated app package /home/smabbasht/.config/obsidian/obsidian-1.3.5.asar
+2023-06-21 10:22:28 Checking for update using Github
+2023-06-21 10:22:28 Success.
+2023-06-21 10:22:28 Latest version is 1.3.5
+2023-06-21 10:22:28 App is up to date.
+2023-06-21 10:22:31 Loading updated app package /home/smabbasht/.config/obsidian/obsidian-1.3.5.asar
+2023-06-21 10:22:32 Checking for update using Github
+2023-06-25 11:59:25 Loading updated app package /home/smabbasht/.config/obsidian/obsidian-1.3.5.asar
+2023-06-25 11:59:27 Checking for update using Github
+2023-06-25 11:59:27 Success.
+2023-06-25 11:59:27 Latest version is 1.3.5
+2023-06-25 11:59:27 App is up to date.
