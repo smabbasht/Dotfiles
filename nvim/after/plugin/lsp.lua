@@ -2,13 +2,13 @@ local lsp = require('lsp-zero').preset({})
 
 lsp.ensure_installed({
     -- python, c, latex, markdown, bash, fish, lua, yaml, toml
-    'pyright',
-    'clangd',
+    -- 'pyright',
+    -- 'clangd',
     -- 'lua-language-server',
     -- 'bash-language-server',
-    'texlab',
+    -- 'texlab',
     -- 'prosemd-lsp',
-    'taplo',
+    -- 'taplo',
     -- 'yaml-language-server',
 })
 

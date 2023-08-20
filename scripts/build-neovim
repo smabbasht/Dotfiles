@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Install build prerequisites
+#sudo apt-get update
+#sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+
+# Clone Neovim repository
+#git clone https://github.com/neovim/neovim.git
+
+# Change directory to Neovim
+cd neovim
+
+# Build Neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+
+# If you want the stable release
+git checkout stable
+
+# Install Neovim (system-wide)
+sudo make install
+
+# If you want to install to a custom location, set CMAKE_INSTALL_PREFIX
+# For example: sudo make CMAKE_INSTALL_PREFIX=/opt/neovim install
+
+# Clean up build artifacts
+make clean
+
+echo "Neovim has been built and installed."
+

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <alias> <command>"
+    exit 1
+fi
+
+alias_name="$1"
+alias_command="$2"
+
+# Escape single quotes in alias_command
+escaped_command="${alias_command//\'/\'\\\'\'}"
+
+echo "alias '$alias_name'='$escaped_command'" >> ~/.bash_aliases
+echo "Alias '$alias_name' added to ~/.bash_aliases"
+source ~/.bashrc
+

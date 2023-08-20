@@ -1,0 +1,55 @@
+#!/bin/bash
+
+install_mason_package() {
+    echo "Installing $1..."
+    nvim --headless -c "MasonInstall $1" -c "qa"
+    echo "Installation of $1 completed."
+}
+
+packages=(
+    clangd
+    shfmt
+    shellcheck
+    hadolint
+    ed
+    remark-language-server
+    rome
+    alex
+    remark-cli
+    luaformatter
+    selene
+    lua-language-server
+    yaml-language-server
+    yamllint
+    yamlfmt
+    html-lsp
+    sonarlint-language-server
+    htmlbeautifier
+    sqlls
+    sqlfluff
+    sqlfmt
+    vale
+    latexindent
+    rust-analyzer
+    cpptools
+    rustfmt
+    alled
+    dockerfile-language-server
+    autopep8
+    bash-debug-adapter
+    bash-language-server
+    clang-format
+    cpplint
+    debugpy
+    eslint-lsp
+    eslint_d
+    pylint
+    python-lsp-server
+    taplo
+    texlab
+    ts-standard
+)
+
+for package in ${packages[@]}; do
+    install_mason_package $package
+done

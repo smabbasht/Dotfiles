@@ -31,10 +31,10 @@ import:
   - ~/.config/alacritty/catppuccin-mocha.yml
 
 selection:
-  save_to_clipboard: false
+  save_to_clipboard: true
 
 shell:
-  program: /usr/bin/fish
+  program: /bin/bash
 
 key_bindings:
   - { key: Return, mods: Super|Shift, action: SpawnNewInstance }
