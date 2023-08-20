@@ -1,3 +1,15 @@
+Slack/
+enchant/
+Windscribe/
+gedit/
+gnome-initial-setup-done
+ibus/
+notion-app/
+pop-shell/
+pop-system-updater/
+qalculate/
+teams-for-linux/
+touchegg/
 balena-etcher
 obsidian
 stacer/
@@ -14,6 +26,8 @@ Backgrounds/subfolder/*
 spacer/*
 Mailspring
 akonad*
+Mailspring
+Mailspring/.*
 Mailspring/blob_storage
 Mailspring/compile-cache
 Mailspring/Cookies
