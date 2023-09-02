@@ -1,3 +1,8 @@
+Smart Code ltd/
+draw.io/
+media-controls/
+lazygit
+lazygit/*
 Slack/
 enchant/
 Windscribe/
@@ -117,7 +122,7 @@ Thunar/*
 archlinux-tweak-tool/*
 autostart/*
 breezy/*
-btop/*
+nvim/lazy-lock.json
 chromium/*
 coc/*
 dconf/*

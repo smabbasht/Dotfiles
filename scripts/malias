@@ -13,5 +13,5 @@ escaped_command="${alias_command//\'/\'\\\'\'}"
 
 echo "alias '$alias_name'='$escaped_command'" >> ~/.bash_aliases
 echo "Alias '$alias_name' added to ~/.bash_aliases"
-source ~/.bashrc
+source ~/.bash_aliases
 

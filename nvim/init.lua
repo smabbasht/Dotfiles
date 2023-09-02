@@ -7,6 +7,7 @@
 --------------------------------------------------------------------------------------------------------
 -- Set.lua
 --------------------------------------------------------------------------------------------------------
+vim.opt.guifont='Hack Nerd Font'
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -146,6 +147,11 @@ local plugins = {
     'kyazdani42/nvim-web-devicons',
     'neoclide/coc.nvim',
     'wakatime/vim-wakatime',
+    {
+        'barrett-ruth/live-server.nvim',
+        build = 'yarn global add live-server',
+        config = true
+    },
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         -- or                            , branch = '0.1.x',

@@ -1,14 +1,14 @@
 window:
   padding:
     x: 8
-    y: 1
+    y: 0
   class:
     instance: Alacritty
     general: Alacritty
   opacity: 0.75
 
 scrolling:
-  history: 1000
+  history: 5000
   multiplier: 3
 
 font:
