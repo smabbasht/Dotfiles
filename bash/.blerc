@@ -9,3 +9,4 @@ ble-face auto_complete='fg=240,underline,italic'
 ble-color-setface auto_complete fg=242,bg=235
 ble-color-setface auto_complete fg=white,bg=69
 ble-color-setface auto_complete fg=240,underline,italic
+
