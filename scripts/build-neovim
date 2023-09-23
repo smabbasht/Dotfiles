@@ -1,11 +1,12 @@
-#!/bin/bash
+#! /bin/bash
 
 # Install build prerequisites
 #sudo apt-get update
 #sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 
 # Clone Neovim repository
-#git clone https://github.com/neovim/neovim.git
+rm -rvf neovim
+git clone https://github.com/neovim/neovim.git
 
 # Change directory to Neovim
 cd neovim

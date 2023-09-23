@@ -5,8 +5,8 @@
 --------------------------------------------------------------------------------------------------------
 -- Set.lua
 --------------------------------------------------------------------------------------------------------
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 vim.opt.guifont = "Hack Nerd Font"
 vim.opt.nu = true
@@ -75,9 +75,9 @@ vim.cmd([[
 vim.g.mapleader = " "
 
 -- Source init.lua
-vim.keymap.set("n", "<leader>_", function()
-	vim.cmd("so ~/.config/nvim/init.lua")
-end, { desc = "source init.lua" })
+-- vim.keymap.set("n", "<leader>_", function()
+-- 	vim.cmd("so ~/.config/nvim/init.lua")
+-- end, { desc = "source init.lua" })
 
 -- No-op the arrow keys
 vim.keymap.set({ "n", "v", "i" }, "<Up>", "<nop>")
@@ -94,7 +94,7 @@ vim.keymap.set("n", "<leader>l", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>h", vim.cmd.bprevious)
 
 -- Browse Files
-vim.keymap.set("n", "<leader>bf", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>bf", ":Ex<CR>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Toggle Transparency
@@ -232,7 +232,10 @@ local plugins = {
 	},
 }
 
-local opts = {}
+local opts = {
+  -- other stuff
+  background_colour = "#000000"
+}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
