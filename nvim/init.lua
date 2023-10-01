@@ -52,11 +52,11 @@ vim.g.surround_no_insert_space = 1
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
 
 -- Reduce Alacritty padding when entering Neovim
@@ -99,7 +99,7 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Toggle Transparency
 vim.keymap.set("n", "<leader>tt", vim.cmd.TransparentToggle, { silent = true }) -- toggle transparent
-vim.keymap.set("v", "<leader>y", [["+y"<CR>]]) -- copy to system clipboard
+vim.keymap.set("v", "<leader>y", [["+y"<CR>]])                                  -- copy to system clipboard
 -- vim.keymap.set("n", "<leader>y", [["+y"<CR>]]) -- copy to system clipboard
 
 vim.keymap.set("v", "<leader>p", [["_dP]])
@@ -112,7 +112,7 @@ vim.keymap.set({ "n", "v" }, "<leader>Op", [[O<esc>p]])
 
 -- vim.keymap.set("n", "<leader>s", [[:w<CR>]] ) -- search and replace
 vim.keymap.set("i", "<C-s>", [[<esc>:w<CR>li]]) -- search and replace
-vim.keymap.set("n", "<C-s>", [[:w<CR>]]) -- search and replace
+vim.keymap.set("n", "<C-s>", [[:w<CR>]])        -- search and replace
 
 -- [f]ormat the Buffer
 vim.keymap.set("n", "<F5>", vim.lsp.buf.format)
@@ -138,115 +138,133 @@ vim.keymap.set({ "n", "v", "i" }, "<C-l>", "<C-w>l")
 -- Lazy.lua
 --------------------------------------------------------------------------------------------------------
 local plugins = {
-	"nvim-treesitter/nvim-treesitter",
-	"nvim-treesitter/playground",
-	"mbbill/undotree",
-	"olimorris/onedarkpro.nvim",
-	"Mofiqul/dracula.nvim",
-	"tpope/vim-fugitive",
-	"lewis6991/gitsigns.nvim",
-	"github/copilot.vim",
-	"xiyaowong/nvim-transparent",
-	"windwp/nvim-autopairs",
-	"tpope/vim-surround",
-	"lervag/vimtex",
-	"numToStr/Comment.nvim",
-	"hoob3rt/lualine.nvim",
-	"nvim-tree/nvim-web-devicons",
-	"neoclide/coc.nvim",
-	"nvim-tree/nvim-tree.lua",
-	"wakatime/vim-wakatime",
-	-- Debugging
-	"mfussenegger/nvim-dap",
-	"rcarriga/nvim-dap-ui",
-	"mfussenegger/nvim-dap-python",
-	"theHamsta/nvim-dap-virtual-text",
-	{
-		"barrett-ruth/live-server.nvim",
-		build = "yarn global add live-server",
-		config = true,
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-		dependencies = { { "nvim-lua/plenary.nvim" } },
-	},
-	-- plugins by folke
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
-	},
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = {},
-	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		opts = {},
-	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-	}, -- LSP ZERO
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
-		dependencies = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" }, -- Required
-			{
-				-- Optional
-				"williamboman/mason.nvim",
-				run = function()
-					pcall(vim.cmd, "MasonUpdate")
-				end,
-			},
-			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/playground",
+    "mbbill/undotree",
+    "olimorris/onedarkpro.nvim",
+    "Mofiqul/dracula.nvim",
+    "tpope/vim-fugitive",
+    "lewis6991/gitsigns.nvim",
+    "github/copilot.vim",
+    "xiyaowong/nvim-transparent",
+    "windwp/nvim-autopairs",
+    "tpope/vim-surround",
+    "lervag/vimtex",
+    "numToStr/Comment.nvim",
+    "hoob3rt/lualine.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "neoclide/coc.nvim",
+    "nvim-tree/nvim-tree.lua",
+    "wakatime/vim-wakatime",
+    -- Debugging
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "mfussenegger/nvim-dap-python",
+    "theHamsta/nvim-dap-virtual-text",
+    {
+        "toppair/peek.nvim",
+        event = { "BufRead", "BufNewFile" },
+        build = "deno task --quiet build:fast",
+        config = function()
+            require("peek").setup()
+            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+        end,
+    },
+    -- file explorer
+    {
+        'nvim-tree/nvim-tree.lua',
+        lazy = true,
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+    },
+    {
+        "barrett-ruth/live-server.nvim",
+        build = "yarn global add live-server",
+        config = true,
+    },
+    {
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+    },
+    -- plugins by folke
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {},
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+    }, -- LSP ZERO
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v2.x",
+        dependencies = {
+            -- LSP Support
+            { "neovim/nvim-lspconfig" }, -- Required
+            {
+                -- Optional
+                "williamboman/mason.nvim",
+                run = function()
+                    pcall(vim.cmd, "MasonUpdate")
+                end,
+            },
+            { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" }, -- Required
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "hrsh7th/cmp-nvim-lua" },
+            -- Autocompletion
+            { "hrsh7th/nvim-cmp" }, -- Required
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp" }, -- Required
+            { "hrsh7th/cmp-nvim-lua" },
 
-			-- Snippet
-			{ "L3MON4D3/LuaSnip" }, -- Required
-			{ "rafamadriz/friendly-snippets" },
-		},
-	},
+            -- Snippet
+            { "L3MON4D3/LuaSnip" }, -- Required
+            { "rafamadriz/friendly-snippets" },
+        },
+    },
 }
 
 local opts = {
-  -- other stuff
-  background_colour = "#000000"
+    -- other stuff
+    background_colour = "#000000"
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 

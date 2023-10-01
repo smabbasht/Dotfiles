@@ -1,10 +1,11 @@
 #! /bin/bash
 
 # Install build prerequisites
-#sudo apt-get update
-#sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+sudo apt-get update
+sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip zoxide
 
 # Clone Neovim repository
+z neovim
 rm -rvf neovim
 git clone https://github.com/neovim/neovim.git
 

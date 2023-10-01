@@ -1,13 +1,30 @@
 local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader>sp', builtin.find_files, {})
-vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader> ', builtin.buffers, {})
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 
 
 -- Remaps I added
+vim.keymap.set('n', '<leader>sp', function()
+    require('telescope.builtin').find_files(
+        {
+            file_ignore_patterns = {
+                "undodir", ".cache", ".cargo", ".rustup", ".local", ".npm", ".node-gyp", "drive", "env"
+            }
+        }
+    )
+end, { desc = '[S]earch [P]roject' })
+------------------
+vim.keymap.set('n', '<leader>sg', function()
+    require('telescope.builtin').live_grep(
+        {
+            file_ignore_patterns = {
+                "undodir", ".cache", ".cargo", ".rustup", ".local", ".npm", ".node-gyp", "drive", "env"
+            }
+        }
+    )
+end, { desc = '[S]earch [G]rep' })
 ------------------
 vim.keymap.set('n', '<leader>sf', function()
     require('telescope.builtin').find_files(
@@ -26,7 +43,7 @@ vim.keymap.set('n', '<leader>sF', function()
         {
             cwd = os.getenv("HOME"),
             -- ignore = { "*/.vim/undodir", "~/.cache/*" },
-            hidden=true,
+            hidden = true,
             file_ignore_patterns = {
                 "undodir", ".cache", ".cargo", ".rustup", ".local", ".npm", ".node-gyp", "drive"
             }
