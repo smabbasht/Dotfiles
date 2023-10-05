@@ -20,10 +20,10 @@ require("nvim-tree").setup({
         number = true,
         relativenumber = true
     },
-    auto_close = true,
-    hijack_cursor = true,
+    -- auto_close = true,
+    -- hijack_cursor = true,
     open_on_tab = false,
-    update_cwd = true,
+    -- update_cwd = true,
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {

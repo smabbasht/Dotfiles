@@ -43,7 +43,7 @@ style = "bold red"
 
 [shell]
 fish_indicator = '🐬'
-bash_indicator = ' '
+bash_indicator = '💡'
 unknown_indicator = 'mystery shell'
 style = 'bold yellow'
 disabled = false
