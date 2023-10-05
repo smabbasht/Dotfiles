@@ -1,6 +1,6 @@
 window:
   padding:
-    x: 0
+    x: 8
     y: 0
   class:
     instance: Alacritty
