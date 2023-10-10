@@ -40,7 +40,7 @@ vim.opt.updatetime = 50
 vim.o.numberwidth = 1
 vim.opt.cursorline = true
 
-vim.opt.mouse = ""
+-- vim.opt.mouse = ""
 
 vim.g.python3_host_prog = "/usr/bin/python3"
 

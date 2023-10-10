@@ -23,9 +23,12 @@ control_chars = ['', '', '', '']
 # else default key value.
 # example:
 display_player_prefix = {
+    "default":  '',
     "spotify":  '',
     "brave":    '',
-    "default":  ''
+    "slack":    '󰒱',
+    "stremio":  '',
+    "vlc":      '󰕼',
 }
 
 # (list) : list of metadata fields based on mpris sepecification.

@@ -44,7 +44,7 @@ selection:
   save_to_clipboard: true
 
 shell:
-  program: /bin/bash
+  program: /usr/bin/fish
 
 key_bindings:
   - { key: Return, mods: Super|Shift, action: SpawnNewInstance }

@@ -24,7 +24,7 @@ font pango:Comic Mono NF 10
 exec --no-startup-id dex --autostart --environment i3
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
 
 # low batteyr notifier
 # exec --no-startup-id bash ~/.config/scripts/i3-battery-monitor.sh
@@ -116,6 +116,7 @@ bindsym $mod+m exec mailspring
 # for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, move position center
 # for_window [window_role="conversation"] floating enable, resize set 800 600, move position center
         
+bindsym $mod+Shift+e exec --no-startup-id "bash ~/.config/polybar/polyscripts/powermenu.sh"
 bindsym $mod+i exec --no-startup-id "i3lock-fancy"
 bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy"
 
@@ -123,7 +124,7 @@ bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy"
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "~/.config/polybar/forest/scripts/launcher.sh"
+bindsym $mod+d exec --no-startup-id "~/.config/polybar/polyscripts/launcher.sh"
 # bindsym $mod+d exec --no-startup-id "rofi -i -show drun -modi drun -show-icons"
 # search for files too
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show run"

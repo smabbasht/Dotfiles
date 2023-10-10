@@ -15,7 +15,6 @@ require("nvim-tree").setup({
     },
     view = {
         width = 30,
-        height = 30,
         side = 'left',
         number = true,
         relativenumber = true
