@@ -32,9 +32,14 @@ set -gx SUCCESS_SYMBOL "🐟"
 
 # set export $(dbus-launch)
 fish_add_path $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
+fish_add_path ~/Desktop/packages/source/tmux/
 # bash ~/.config/scripts/remind.sh
 fish_add_path ~/.config/scripts
 # bash ~/.config/scripts/n.sh
+function nvm
+    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
+nvm use 17.9.0 --silent
 
 #
 # Starship
