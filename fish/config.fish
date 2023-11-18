@@ -6,6 +6,7 @@ end
 
 # echo "  "
 # neofetch
+fish_add_path ~/swift-n
 
 set -gx SUCCESS_SYMBOL "🐟"
 

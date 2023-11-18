@@ -1,8 +1,27 @@
+Kvantum/*
+balena*
+balena-etcher/*
+caja/*
+cfg*/*
 transmission/*
+dunst/*
 Code*/*
+gnome*/*
 figma-linux/*
 Code/*
 Smart Code ltd/
+lazygit/*
+notion*/*
+obs*/*
+nwg*/*
+opera/*
+pluma/*
+qt5ct/*
+Mailspring*/*
+session*/*
+swappy/*
+mate*/*
+marco*/*
 draw.io/
 media-controls/
 lazygit
@@ -11,6 +30,7 @@ Slack/
 enchant/
 Windscribe/
 gedit/
+swww*
 gnome-initial-setup-done
 ibus/
 notion-app/
@@ -22,6 +42,11 @@ touchegg/
 balena-etcher
 obsidian
 stacer/
+monitor*
+baloo*
+pavu*
+arkrc
+albert.conf
 TabNine/*
 obsidian/*
 cubocore

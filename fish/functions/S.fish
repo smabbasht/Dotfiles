@@ -1,4 +1,4 @@
-function S --wraps='sudo apt show' --description 'alias S sudo apt show'
-  sudo apt show $argv
+function S --wraps='sudo apt show' --wraps='sudo pacman --noconfirm -S' --description 'alias S sudo pacman --noconfirm -S'
+  sudo pacman --noconfirm -S $argv
         
 end

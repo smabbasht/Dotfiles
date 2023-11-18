@@ -24,7 +24,7 @@ font pango:Comic Mono NF 10
 exec --no-startup-id dex --autostart --environment i3
 
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leaving...?' -B 'Yes, take me to Display Manager' 'i3-msg exit'"
 
 # low batteyr notifier
 # exec --no-startup-id bash ~/.config/scripts/i3-battery-monitor.sh
@@ -86,7 +86,7 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # open brave browser 
-bindsym $mod+b exec brave-browser
+bindsym $mod+b exec opera
 
 # open Spotify
 bindsym $mod+Shift+s exec spotify
@@ -116,7 +116,7 @@ bindsym $mod+m exec mailspring
 # for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, move position center
 # for_window [window_role="conversation"] floating enable, resize set 800 600, move position center
         
-bindsym $mod+Shift+e exec --no-startup-id "bash ~/.config/polybar/polyscripts/powermenu.sh"
+# bindsym $mod+Shift+e exec --no-startup-id "bash ~/.config/polybar/polyscripts/powermenu.sh"
 bindsym $mod+i exec --no-startup-id "i3lock-fancy"
 bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy"
 
@@ -286,7 +286,7 @@ for_window [class="^.*"] border pixel 0
 exec_always ~/.config/polybar/launch.sh &
 
 # Set the desktop background
-exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/man-with-horse-on-mountain-at-sunset.jpeg &
+exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/* &
 
 exec --no-startup-id picom -cb
 

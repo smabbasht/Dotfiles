@@ -49,6 +49,17 @@ vim.g.transparent_enabled = true
 
 vim.g.surround_no_insert_space = 1
 
+-- [[ Format on save ]]
+vim.api.nvim_create_augroup('AutoFormatting', {})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.*',
+  group = 'AutoFormatting',
+  callback = function()
+    vim.lsp.buf.format({ async = true })
+    vim.cmd.write()
+  end,
+})
+
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -59,16 +70,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
 })
 
--- Reduce Alacritty padding when entering Neovim
-vim.cmd([[
-  autocmd VimEnter * silent! !sed -i -E '/padding:/,/x: [0-9]+/ s/(x|y): [0-9]+/\1: 0/' ~/.config/alacritty/alacritty.yml | alacritty --daemonize
-]])
-
--- Increase Alacritty padding when exiting Neovim
-vim.cmd([[
-  autocmd VimLeave * silent! !sed -i -E '/padding:/,/x: [0-9]+/ s/(x|y): [0-9]+/\1: 8/' ~/.config/alacritty/alacritty.yml | alacritty --daemonize
-]])
-
+-- -- Reduce Alacritty padding when entering Neovim
+-- vim.cmd([[
+--   autocmd VimEnter * silent! !sed -i -E '/padding:/,/x: [0-9]+/ s/(x|y): [0-9]+/\1: 0/' ~/.config/alacritty/alacritty.yml | alacritty --daemonize
+-- ]])
+--
+-- -- Increase Alacritty padding when exiting Neovim
+-- vim.cmd([[
+--   autocmd VimLeave * silent! !sed -i -E '/padding:/,/x: [0-9]+/ s/(x|y): [0-9]+/\1: 8/' ~/.config/alacritty/alacritty.yml | alacritty --daemonize
+-- ]])
+--
 --------------------------------------------------------------------------------------------------------
 -- Remap.lua
 --------------------------------------------------------------------------------------------------------
@@ -100,7 +111,7 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- Toggle Transparency
 vim.keymap.set("n", "<leader>tt", vim.cmd.TransparentToggle, { silent = true }) -- toggle transparent
 vim.keymap.set("v", "<leader>y", [["+y"<CR>]])                                  -- copy to system clipboard
--- vim.keymap.set("n", "<leader>y", [["+y"<CR>]]) -- copy to system clipboard
+vim.keymap.set("v", "<leader>Y", ":w !wl-copy<CR>")                             -- copy to system clipboard
 
 vim.keymap.set("v", "<leader>p", [["_dP]])
 
@@ -161,14 +172,45 @@ local plugins = {
     "rcarriga/nvim-dap-ui",
     "mfussenegger/nvim-dap-python",
     "theHamsta/nvim-dap-virtual-text",
+    -- remote
     {
-        "toppair/peek.nvim",
-        event = { "BufRead", "BufNewFile" },
-        build = "deno task --quiet build:fast",
+        "amitds1997/remote-nvim.nvim",
+        version = "*", -- This keeps it pinned to semantic releases
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+            -- This would be an optional dependency eventually
+            "nvim-telescope/telescope.nvim",
+        },
+        config = true, -- This calls the default setup(); make sure to call it
+    },
+    {
+        'chipsenkbeil/distant.nvim',
+        branch = 'v0.3',
         config = function()
-            require("peek").setup()
-            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+            require('distant'):setup()
+        end
+    },
+    -- init.lua:
+    {
+        'nosduco/remote-sshfs.nvim',
+    },
+    -- textobjects
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+    -- refactoring
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("refactoring").setup()
         end,
     },
     -- file explorer
@@ -186,7 +228,7 @@ local plugins = {
     },
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
+        tag = "0.1.4",
         dependencies = { { "nvim-lua/plenary.nvim" } },
     },
     -- plugins by folke
@@ -219,6 +261,19 @@ local plugins = {
     --         "MunifTanjim/nui.nvim",
     --         "rcarriga/nvim-notify",
     --     },
+    -- breadcrumbs
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        opts = {
+            -- configurations go here
+        },
+    },
     -- }, -- LSP ZERO
     {
         "VonHeikemen/lsp-zero.nvim",

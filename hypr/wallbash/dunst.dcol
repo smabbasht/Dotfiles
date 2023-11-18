@@ -1,0 +1,15 @@
+4|~/.config/dunst/Wall-Dcol.conf|$ScrDir/wallbashdunst.sh
+
+[urgency_low]
+    background = "<dcol_3>"
+    foreground = "<dcol_1>"
+    frame_color = "<dcol_2>"
+    icon = "~/.config/dunst/icons/hyprdots.svg"
+    timeout = 10
+
+[urgency_normal]
+    background = "<dcol_0>"
+    foreground = "<dcol_3>"
+    frame_color = "<dcol_2>"
+    icon = "~/.config/dunst/icons/hyprdots.svg"
+    timeout = 10
