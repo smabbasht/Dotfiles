@@ -21,6 +21,7 @@ Mailspring*/*
 session*/*
 swappy/*
 mate*/*
+nvim/after/plugin/remote.lua
 marco*/*
 draw.io/
 media-controls/

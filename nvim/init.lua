@@ -52,12 +52,12 @@ vim.g.surround_no_insert_space = 1
 -- [[ Format on save ]]
 vim.api.nvim_create_augroup('AutoFormatting', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*.*',
-  group = 'AutoFormatting',
-  callback = function()
-    vim.lsp.buf.format({ async = true })
-    vim.cmd.write()
-  end,
+    pattern = '*.*',
+    group = 'AutoFormatting',
+    callback = function()
+        vim.lsp.buf.format({ async = true })
+        vim.cmd.write()
+    end,
 })
 
 -- [[ Highlight on yank ]]
@@ -103,7 +103,6 @@ vim.keymap.set({ "n", "v" }, "L", "Lzz")
 vim.keymap.set("n", "<leader>q", vim.cmd.bdelete)
 vim.keymap.set("n", "<leader>l", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>h", vim.cmd.bprevious)
-
 -- Browse Files
 vim.keymap.set("n", "<leader>bf", ":Ex<CR>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
@@ -168,34 +167,35 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     "wakatime/vim-wakatime",
     -- Debugging
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
-    "mfussenegger/nvim-dap-python",
-    "theHamsta/nvim-dap-virtual-text",
+    -- "mfussenegger/nvim-dap",
+    -- "rcarriga/nvim-dap-ui",
+    -- "mfussenegger/nvim-dap-python",
+    -- "theHamsta/nvim-dap-virtual-text",
     -- remote
-    {
-        "amitds1997/remote-nvim.nvim",
-        version = "*", -- This keeps it pinned to semantic releases
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-            -- This would be an optional dependency eventually
-            "nvim-telescope/telescope.nvim",
-        },
-        config = true, -- This calls the default setup(); make sure to call it
-    },
+    -- {
+    --     "amitds1997/remote-nvim.nvim",
+    --     version = "*", -- This keeps it pinned to semantic releases
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "MunifTanjim/nui.nvim",
+    --         "rcarriga/nvim-notify",
+    --         -- This would be an optional dependency eventually
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --     config = true, -- This calls the default setup(); make sure to call it
+    -- },
     {
         'chipsenkbeil/distant.nvim',
         branch = 'v0.3',
+        Lazy = true,
         config = function()
             require('distant'):setup()
         end
     },
     -- init.lua:
-    {
-        'nosduco/remote-sshfs.nvim',
-    },
+    -- {
+    --     'nosduco/remote-sshfs.nvim',
+    -- },
     -- textobjects
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -261,6 +261,7 @@ local plugins = {
     --         "MunifTanjim/nui.nvim",
     --         "rcarriga/nvim-notify",
     --     },
+    -- },
     -- breadcrumbs
     {
         "utilyre/barbecue.nvim",
