@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $altmod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -53,6 +54,7 @@ exec parcellite --no-startup-id
 exec --no-startup-id nm-applet
 
 bindsym Print exec --no-startup-id flameshot gui
+bindsym Shift+Print exec --no-startup-id flameshot full gui
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -75,7 +77,7 @@ bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
 # bindsym Shift+XF86MonBrightnessUp exec bash ~/.config/scripts/bup
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $altmod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
@@ -86,10 +88,10 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # open brave browser 
-bindsym $mod+b exec opera
-
+bindsym $mod+b exec microsoft-edge-stable
+bindsym $mod+Shift+b exec firefox
 # open Spotify
-bindsym $mod+Shift+s exec spotify
+bindsym $mod+Shift+s exec spotify-launcher
 
 # open Notion
 bindsym $mod+Ctrl+n exec notion-app
@@ -101,7 +103,10 @@ bindsym $mod+Ctrl+s exec slack
 bindsym $mod+Ctrl+t exec teams
 
 # open whatsapp 
-bindsym $mod+o exec evince
+bindsym $mod+Shift+w exec whatsdesk
+
+# open doc viewer 
+bindsym $mod+o exec atril
 
 # open nautilus
 bindsym $mod+x exec thunar
@@ -118,7 +123,7 @@ bindsym $mod+m exec mailspring
         
 # bindsym $mod+Shift+e exec --no-startup-id "bash ~/.config/polybar/polyscripts/powermenu.sh"
 bindsym $mod+i exec --no-startup-id "i3lock-fancy"
-bindsym $mod+Shift+i exec --no-startup-id "systemctl suspend && i3lock-fancy"
+bindsym $altmod+l exec --no-startup-id "systemctl suspend && i3lock-fancy"
 
 # kill focused window
 bindsym $mod+q kill
@@ -131,6 +136,15 @@ bindsym $mod+Shift+d exec --no-startup-id "rofi -show run"
 
 exec --no-startup-id ~/.config/scripts/swap_caps_esc.sh
 
+# floating rule 
+for_window [window_role="pop-up"]                       floating enable
+for_window [window_role="bubble"]                       floating enable 
+for_window [window_role="task_dialog"]                  floating enable
+for_window [window_role="Preferences"]                  floating enable
+for_window [window_type="dialog"]                       floating enable 
+for_window [window_type="menu"]                         floating enable
+for_window [title="Event Tester"]                       floating enable
+for_window [class="Youtube-dl-gui"]                     floating enable
 
 focus_wrapping no
 # change focus
@@ -219,18 +233,19 @@ bindsym $mod+Shift+r restart
 
 # Confiure gaps
 gaps inner 5
-gaps outer 10
+gaps outer 5
 # smart_gaps on
 
 # Assign apps to workspaces
-assign [class="Brave"]           $ws2
-assign [class="zoom"]            $ws4
-assign [class="Stremio"]         $ws6
-assign [class="Mailspring"]      $ws7
-assign [class="notion-app"]      $ws8
-assign [class="Microsoft Teams"] $ws9
-assign [class="Slack"]           $ws9
-assign [class="Spotify"]         $ws10
+assign [class="firefox"]               $ws2
+assign [class="microsoft-edge-stable"] $ws2
+assign [class="zoom"]                  $ws4
+assign [class="Stremio"]               $ws6
+assign [class="Mailspring"]            $ws7
+assign [class="notion-app"]            $ws8
+assign [class="Microsoft Teams"]       $ws9
+assign [class="Slack"]                 $ws9
+assign [class="Spotify"]               $ws10
 
 
 
@@ -248,7 +263,6 @@ mode "resize" {
         bindsym Down resize grow height 1 px or 1 ppt
         bindsym Up resize shrink height 1 px or 1 ppt
         bindsym Left resize grow width 1 px or 1 ppt
-
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -281,12 +295,18 @@ for_window [class="^.*"] border pixel 0
 
 # Compositor
 # exec picom
+exec --no-startup-id xrandr --addmode eDP-1 1600x900_60.00
+exec --no-startup-id xrandr --newmode "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+exec --no-startup-id xrandr --output eDP-1 --mode 1600x900_60.00
+
 
 # run launch.sh
 exec_always ~/.config/polybar/launch.sh &
 
 # Set the desktop background
-exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/* &
+# exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Backgrounds/* &
+# exec --no-startup-id feh --bg-fill --randomize ~/.config/swww/Catppuccin-Mocha/* &
+exec --no-startup-id feh --bg-fill --randomize ~/.config/Backgrounds/hyprland-for-i3/* &
 
 exec --no-startup-id picom -cb
 

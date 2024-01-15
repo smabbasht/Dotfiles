@@ -36,6 +36,6 @@ fi
 
 # Trigger upgrade
 if [ "$1" == "up" ] ; then
-    kitty --title systemupdate sh -c "${aurhlpr} -Syu $fpk_exup"
+    alacritty --title systemupdate sh -c "${aurhlpr} -Syu $fpk_exup"
 fi
 

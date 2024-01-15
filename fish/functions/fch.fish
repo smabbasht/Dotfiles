@@ -1,4 +1,4 @@
-function fch --wraps='feh --bg-fill --randomize ~/.config/Backgrounds/*/*/*.jpg' --wraps='feh --bg-fill --randomize ~/.config/Backgrounds/current*' --wraps='feh --bg-fill --randomize ~/.config/Backgrounds/current*/*' --description 'alias fch feh --bg-fill --randomize ~/.config/Backgrounds/current*/*'
-  feh --bg-fill --randomize ~/.config/Backgrounds/current*/* $argv
+function fch --wraps='feh --bg-fill --randomize ~/.config/Backgrounds/hyprland-for-i3/*' --description 'alias fch feh --bg-fill --randomize ~/.config/Backgrounds/hyprland-for-i3/*'
+  feh --bg-fill --randomize ~/.config/Backgrounds/hyprland-for-i3/* $argv
         
 end

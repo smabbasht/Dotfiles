@@ -1,4 +1,4 @@
-function mountdata --wraps='sudo ntfs-3g /dev/sdb2 /run/media/smabbasht/Data' --description 'alias mountdata sudo ntfs-3g /dev/sdb2 /run/media/smabbasht/Data'
-  sudo ntfs-3g /dev/sdb2 /run/media/smabbasht/Data $argv
+function mountdata --wraps='sudo mount /dev/sdb3 /run/media/Data' --description 'alias mountdata sudo mount /dev/sdb3 /run/media/Data'
+  sudo mount /dev/sdb3 /run/media/Data $argv
         
 end

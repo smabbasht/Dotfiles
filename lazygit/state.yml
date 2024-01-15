@@ -1,6 +1,13 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/smabbasht/.config
+- /home/smabbasht/.local/share/nvim/lazy/LuaSnip
+- /home/smabbasht/.local/share/nvim/lazy/copilot.vim
+- /home/smabbasht/university/fyp/dashboard
+- /home/smabbasht/university/sem07/infaaq-web-backend
+- /home/smabbasht/university/fyp/bnn
+- /home/smabbasht/Desktop/Resume
+- /home/smabbasht/hobby/AoC23
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

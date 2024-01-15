@@ -17,7 +17,7 @@ do
     hyprctl dispatch workspace empty
     dolphin &> /dev/null &
     sleep 0.21
-    kitty &> /dev/null &
+    alacritty &> /dev/null &
     sleep 1.4
     hyprctl dispatch workspace empty
 
@@ -63,7 +63,7 @@ do
         $ScrDir/wbarconfgen.sh n &> /dev/null
 
         # quickapps
-        $ScrDir/quickapps.sh kitty firefox spotify code dolphin &> /dev/null &
+        $ScrDir/quickapps.sh alacritty firefox spotify code dolphin &> /dev/null &
         sleep 0.7
         pkill -x rofi
 

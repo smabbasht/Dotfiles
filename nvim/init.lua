@@ -1,7 +1,6 @@
 --------------------------------------------------------------------------------------------------------
 -- Init.lua
 --------------------------------------------------------------------------------------------------------
-
 --------------------------------------------------------------------------------------------------------
 -- Set.lua
 --------------------------------------------------------------------------------------------------------
@@ -28,6 +27,7 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
 
@@ -166,6 +166,7 @@ local plugins = {
     "neoclide/coc.nvim",
     "nvim-tree/nvim-tree.lua",
     "wakatime/vim-wakatime",
+    "edluffy/hologram.nvim",
     -- Debugging
     -- "mfussenegger/nvim-dap",
     -- "rcarriga/nvim-dap-ui",
@@ -184,6 +185,15 @@ local plugins = {
     --     },
     --     config = true, -- This calls the default setup(); make sure to call it
     -- },
+    -- jupyter
+    {
+        "kiyoon/jupynium.nvim",
+        build = "pip3 install --user .",
+        -- build = "conda run --no-capture-output -n jupynium pip install .",
+        -- enabled = vim.fn.isdirectory(vim.fn.expand "~/miniconda3/envs/jupynium"),
+    },
+    "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
+    { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' },
     {
         'chipsenkbeil/distant.nvim',
         branch = 'v0.3',
