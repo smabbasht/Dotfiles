@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-ScrDir=`dirname $(realpath $0)`
-WalDir="$HOME/.config/swww"
-WalCtl="$WalDir/wall.ctl"
-RofDir="$HOME/.config/rofi"
+ScrDir=`dirname "$(realpath "$0")"`
+source $ScrDir/globalcontrol.sh
+WalDir="${XDG_CONFIG_HOME:-$HOME/.config}/swww"
+RofDir="${XDG_CONFIG_HOME:-$HOME/.config}/rofi"
 
 roficn=0
 wlogcn=1
@@ -17,7 +17,7 @@ do
     hyprctl dispatch workspace empty
     dolphin &> /dev/null &
     sleep 0.21
-    alacritty &> /dev/null &
+    kitty &> /dev/null &
     sleep 1.4
     hyprctl dispatch workspace empty
 
@@ -63,7 +63,7 @@ do
         $ScrDir/wbarconfgen.sh n &> /dev/null
 
         # quickapps
-        $ScrDir/quickapps.sh alacritty firefox spotify code dolphin &> /dev/null &
+        $ScrDir/quickapps.sh kitty firefox spotify code dolphin &> /dev/null &
         sleep 0.7
         pkill -x rofi
 
@@ -87,5 +87,5 @@ do
             $ScrDir/volumecontrol.sh -o $vol
         done
     done
-done < $WalCtl
+done < "$ThemeCtl"
 

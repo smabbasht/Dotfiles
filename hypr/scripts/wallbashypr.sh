@@ -2,14 +2,14 @@
 
 # set variables
 
-ScrDir=`dirname $(realpath $0)`
+ScrDir=`dirname "$(realpath "$0")"`
 source $ScrDir/globalcontrol.sh
-hypDir="$HOME/.config/hypr/themes"
+hypDir="${XDG_CONFIG_HOME:-$HOME/.config}/hypr/themes"
 
 # regen color conf
 
 if [ "$EnableWallDcol" -eq 1 ] ; then
-    sed 's/#//g' ${hypDir}/Wall-Dcol.conf > ${hypDir}/colors.conf
+    cp ${hypDir}/Wall-Dcol.conf ${hypDir}/colors.conf
 else
     > ${hypDir}/colors.conf
 fi

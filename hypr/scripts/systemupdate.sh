@@ -6,7 +6,7 @@ if [ ! -f /etc/arch-release ] ; then
 fi
 
 # source variables
-ScrDir=`dirname $(realpath $0)`
+ScrDir=`dirname "$(realpath "$0")"`
 source $ScrDir/globalcontrol.sh
 
 # Check for updates
@@ -36,6 +36,6 @@ fi
 
 # Trigger upgrade
 if [ "$1" == "up" ] ; then
-    alacritty --title systemupdate sh -c "${aurhlpr} -Syu $fpk_exup"
+    kitty --title systemupdate sh -c "${aurhlpr} -Syu $fpk_exup"
 fi
 

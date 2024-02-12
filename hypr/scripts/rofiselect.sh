@@ -1,11 +1,12 @@
 #!/usr/bin/env sh
 
 # set variables
-ScrDir=`dirname $(realpath $0)`
+ScrDir=`dirname "$(realpath "$0")"`
 source $ScrDir/globalcontrol.sh
-RofiConf="$HOME/.config/rofi/themeselect.rasi"
-RofiStyle="$HOME/.config/rofi/styles"
-Rofilaunch="$HOME/.config/rofi/config.rasi"
+RofiConf="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/themeselect.rasi"
+RofiStyle="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/styles"
+RofiAssets="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/assets"
+Rofilaunch="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/config.rasi"
 
 
 # scale for monitor x res
@@ -21,15 +22,15 @@ r_override="listview{columns:4;} element{orientation:vertical;border-radius:${el
 
 
 # launch rofi menu
-RofiSel=$( ls $RofiStyle/style_*.rasi | awk -F '/' '{print $NF}' | cut -d '.' -f 1 | while read rstyle
+RofiSel=$( ls ${RofiStyle}/style_*.rasi | awk -F '/' '{print $NF}' | cut -d '.' -f 1 | while read rstyle
 do
-    echo -en "$rstyle\x00icon\x1f$RofiStyle/${rstyle}.png\n"
+    echo -en "$rstyle\x00icon\x1f${RofiAssets}/${rstyle}.png\n"
 done | rofi -dmenu -theme-str "${r_override}" -config $RofiConf)
 
 
 # apply rofi style
 if [ ! -z $RofiSel ] ; then
-    cp $RofiStyle/$RofiSel.rasi $Rofilaunch
-    dunstify "t1" -a " ${RofiSel} applied..." -i "$RofiStyle/$RofiSel.png" -r 91190 -t 2200
+    cp "${RofiStyle}/${RofiSel}.rasi" "${Rofilaunch}"
+    dunstify "t1" -a " ${RofiSel} applied..." -i "$RofiAssets/$RofiSel.png" -r 91190 -t 2200
 fi
 

@@ -194,14 +194,14 @@ local plugins = {
     },
     "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
     { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' },
-    {
-        'chipsenkbeil/distant.nvim',
-        branch = 'v0.3',
-        Lazy = true,
-        config = function()
-            require('distant'):setup()
-        end
-    },
+    -- {
+    --     'chipsenkbeil/distant.nvim',
+    --     branch = 'v0.3',
+    --     Lazy = true,
+    --     config = function()
+    --         require('distant'):setup()
+    --     end
+    -- },
     -- init.lua:
     -- {
     --     'nosduco/remote-sshfs.nvim',
